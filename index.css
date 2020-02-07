@@ -36,10 +36,45 @@ body {
 
 /* mainContent -------------------------------------------------------------- */
 
-.mainContent {
+.mainContentContainer {
+  padding: 20px;
   height: 425px;
-  width: 100%;
-  background: white;
+  /* width: 100%; */
+  background: yellow;
+}
+
+/* mainContentLeft ---------------------------------------------------------- */
+
+.mainContentLeft {
+  float: left;
+  height: 100%;
+  width: 45%;
+  background: green;
+}
+
+/* mainContentDivider ---------------------------------------------------------- */
+
+.mainContentDivider {
+  display: inline-block;
+  position: absolute;
+  height: 60%;
+  left: 49.75%;
+  width: 0.5%;
+  background: #D8D8D8;
+  border-radius: 10px;
+}
+
+.dividerLine {
+
+}
+
+/* mainContentRight --------------------------------------------------------- */
+
+.mainContentRight {
+  float: right;
+  height: 100%;
+  width: 45%;
+  background: blue;
 }
 
 /* Footer ------------------------------------------------------------------- */
