@@ -1,0 +1,29 @@
+/* Body --------------------------------------------------------------------- */
+
+body {
+  margin: 0%;
+}
+
+/* Header ------------------------------------------------------------------- */
+
+.header {
+  background: white;
+  position: relative;
+  text-align: center;
+  color: white;
+  height: 10%;
+}
+
+.textHeader {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  font-size: 65px;
+}
+
+/* Footer ------------------------------------------------------------------- */
+
+.footer {
+  padding: 55px;
+  background: #D8D8D8;
+}
