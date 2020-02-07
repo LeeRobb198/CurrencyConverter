@@ -10,7 +10,6 @@ body {
   background: white;
   position: relative;
   text-align: center;
-  color: white;
   height: 10%;
 }
 
@@ -19,11 +18,34 @@ body {
   top: 30px;
   left: 40px;
   font-size: 65px;
+  color: #404040;
+  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+}
+
+.imageHeader {
+  opacity: 0.7;
+}
+
+/* headerLine --------------------------------------------------------------- */
+
+.headerLine {
+  width: 706px;
+  border-top: 25px solid #D8D8D8;
+  border-right: 25px solid transparent;
+}
+
+/* mainContent -------------------------------------------------------------- */
+
+.mainContent {
+  height: 425px;
+  width: 100%;
+  background: white;
 }
 
 /* Footer ------------------------------------------------------------------- */
 
 .footer {
-  padding: 55px;
-  background: #D8D8D8;
+  right: 0px;
+  border-bottom: 25px solid #D8D8D8;
+  border-left: 25px solid transparent;
 }
