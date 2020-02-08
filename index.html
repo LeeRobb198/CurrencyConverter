@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="myApp">
 
 <!-- Head --------------------------------------------------------------------->
 
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="index.css">
 
     <!-- Angular JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -37,7 +37,7 @@
 
       <!-- mainContentLeft ----------------------->
 
-      <div class="mainContentLeft">
+      <div class="mainContentLeft" ng-controller="mainController">
 
         <!-- Currency 1 -------------------------->
 
@@ -142,7 +142,8 @@
     <div class="footer"></div>
 
     <!-- Script -->
-    <script src="currencyAPI.js"></script>
+    <script src="app.js"></script>
+    <!-- <script src="currencyAPI.js"></script> -->
 
   </body>
 </html>
