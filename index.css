@@ -2,6 +2,7 @@
 
 body {
   margin: 0%;
+  font-family: Arial;
 }
 
 /* Header ------------------------------------------------------------------- */
@@ -52,6 +53,10 @@ body {
   background: green;
 }
 
+.buttonStyle {
+  margin-top: 20px;
+}
+
 /* mainContentDivider ---------------------------------------------------------- */
 
 .mainContentDivider {
@@ -64,10 +69,6 @@ body {
   border-radius: 10px;
 }
 
-.dividerLine {
-
-}
-
 /* mainContentRight --------------------------------------------------------- */
 
 .mainContentRight {
@@ -75,6 +76,18 @@ body {
   height: 100%;
   width: 45%;
   background: blue;
+}
+
+#conversionTitle {
+  margin-left: 10%;
+  font-size: 25px;
+}
+
+#currencyResultsTextArea {
+  margin-left: 10%;
+  width: 80%;
+  height: 70%;
+  font-size: 20px;
 }
 
 /* Footer ------------------------------------------------------------------- */
