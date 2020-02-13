@@ -53,6 +53,10 @@ body {
   background: green;
 }
 
+.amountDiv {
+  width: 100%;
+}
+
 .buttonStyle {
   margin-top: 20px;
 }
@@ -86,8 +90,14 @@ body {
 #currencyResultsTextArea {
   margin-left: 10%;
   width: 80%;
-  height: 70%;
+  height: 60%;
   font-size: 20px;
+  line-height: 50px;
+}
+
+#currencyComparisonMessage {
+  font-size: 25px;
+  margin-left: 10%;
 }
 
 /* Footer ------------------------------------------------------------------- */
