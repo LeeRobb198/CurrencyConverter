@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="myApp">
+<html>
 
 <!-- Head --------------------------------------------------------------------->
 
@@ -31,87 +31,168 @@
 
     <div class="headerLine"></div>
 
-    <!-- mainContentContainer ------------------------------------------------->
+    <!-- mainContentTopContainer ------------------------------------------------->
 
-    <section class="mainContentContainer">
+    <section class="mainContentTopContainer">
 
-      <!-- mainContentLeft ----------------------->
+      <!-- mainContentTopLeft ----------------------->
 
-      <div class="mainContentLeft" ng-controller="mainController">
+      <div class="mainContentTopLeft">
+        <div id="contentTopLeft">
+          <h2 id="currencyTitle"> Currency Rates </h2>
+          <p> Compare exchange rates against a currency: </p>
+          <form>
+            <select id="currencyCompareDropdown">
+              <option value="GBP">GBP - Pound Sterling</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="USD">USD - United States Dollar</option>
+              <option value="CAD">CAD - Canadian Dollar</option>
+              <option value="HKD">HKD - Hong Kong Dollar</option>
+              <option value="ISK">ISK - Icelandic Krona</option>
+              <option value="PHP">PHP - Philippine Peso</option>
+              <option value="DKK">DKK - Danish Krone</option>
+              <option value="HUF">HUF - Hungarian Forint</option>
+              <option value="CZK">CZK - Czech Koruna</option>
+              <option value="AUD">AUD - Australian Dollar</option>
+              <option value="RON">RON - Romanian Leu</option>
+              <option value="SEK">SEK - Swedish Krona</option>
+              <option value="IDR">IDR - Indonesian Rupiah</option>
+              <option value="INR">INR - Indian Rupee</option>
+              <option value="BRL">BRL - Brazilian Real</option>
+              <option value="RUB">RUB - Russian Ruble</option>
+              <option value="HRK">HRK - Croatian Kuna</option>
+              <option value="JPY">JPY - Japanese Yen</option>
+              <option value="THB">THB - Thai Baht</option>
+              <option value="CHF">CHF - Swiss Franc</option>
+              <option value="SGD">SGD - Singapore Dollar</option>
+              <option value="PLN">PLN - Poland złoty</option>
+              <option value="BGN">BGN - Bulgarian Lev</option>
+              <option value="TRY">TRY - Turkish lira</option>
+              <option value="CNY">CNY - Chinese Yuan</option>
+              <option value="NOK">NOK - Norwegian Krone</option>
+              <option value="NZD">NZD - New Zealand Dollar</option>
+              <option value="ZAR">ZAR - South African Rand</option>
+              <option value="MXN">MXN - Mexican Peso</option>
+              <option value="ILS">ILS - Israeli New Shekel</option>
+              <option value="KRW">KRW - South Korean Won</option>
+              <option value="MYR">MYR - Malaysian Ringgit</option>
+            </select>
+          </form>
 
-        <!-- Currency 1 -------------------------->
+          <button class="buttonStyle" id="compareButton" type="submit">Compare</button>
 
-        <h2> Currency 1 </h2>
-        <form>
-          <select id="currencyOne">
-            <option value="GBP">GBP - Pound Sterling</option>
-            <option value="EUR">EUR - Euro</option>
-            <option value="USD">USD - United States Dollar</option>
-            <option value="CAD">CAD - Canadian Dollar</option>
-            <option value="HKD">HKD - Hong Kong Dollar</option>
-            <option value="ISK">ISK - Icelandic Krona</option>
-            <option value="PHP">PHP - Philippine Peso</option>
-            <option value="DKK">DKK - Danish Krone</option>
-            <option value="HUF">HUF - Hungarian Forint</option>
-            <option value="CZK">CZK - Czech Koruna</option>
-            <option value="AUD">AUD - Australian Dollar</option>
-            <option value="RON">RON - Romanian Leu</option>
-            <option value="SEK">SEK - Swedish Krona</option>
-            <option value="IDR">IDR - Indonesian Rupiah</option>
-            <option value="INR">INR - Indian Rupee</option>
-            <option value="BRL">BRL - Brazilian Real</option>
-            <option value="RUB">RUB - Russian Ruble</option>
-            <option value="HRK">HRK - Croatian Kuna</option>
-            <option value="JPY">JPY - Japanese Yen</option>
-            <option value="THB">THB - Thai Baht</option>
-            <option value="CHF">CHF - Swiss Franc</option>
-            <option value="SGD">SGD - Singapore Dollar</option>
-            <option value="PLN">PLN - Poland złoty</option>
-            <option value="BGN">BGN - Bulgarian Lev</option>
-            <option value="TRY">TRY - Turkish lira</option>
-            <option value="CNY">CNY - Chinese Yuan</option>
-            <option value="NOK">NOK - Norwegian Krone</option>
-            <option value="NZD">NZD - New Zealand Dollar</option>
-            <option value="ZAR">ZAR - South African Rand</option>
-            <option value="MXN">MXN - Mexican Peso</option>
-            <option value="ILS">ILS - Israeli New Shekel</option>
-            <option value="KRW">KRW - South Korean Won</option>
-            <option value="MYR">MYR - Malaysian Ringgit</option>
-          </select>
-        </form>
+          <!-- Currency value to convert ----------->
 
-        <!-- Currency value to convert ----------->
+          <h2 id="currencyConversionTitle"> Currency Conversion </h2>
+          <p> Find out how much your currency is worth: </p>
 
-        <div class="amountDiv">
-          <h2> Amount </h2>
+          <form>
+            <select id="currencyConversionDropdown">
+              <option value="GBP">GBP - Pound Sterling</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="USD">USD - United States Dollar</option>
+              <option value="CAD">CAD - Canadian Dollar</option>
+              <option value="HKD">HKD - Hong Kong Dollar</option>
+              <option value="ISK">ISK - Icelandic Krona</option>
+              <option value="PHP">PHP - Philippine Peso</option>
+              <option value="DKK">DKK - Danish Krone</option>
+              <option value="HUF">HUF - Hungarian Forint</option>
+              <option value="CZK">CZK - Czech Koruna</option>
+              <option value="AUD">AUD - Australian Dollar</option>
+              <option value="RON">RON - Romanian Leu</option>
+              <option value="SEK">SEK - Swedish Krona</option>
+              <option value="IDR">IDR - Indonesian Rupiah</option>
+              <option value="INR">INR - Indian Rupee</option>
+              <option value="BRL">BRL - Brazilian Real</option>
+              <option value="RUB">RUB - Russian Ruble</option>
+              <option value="HRK">HRK - Croatian Kuna</option>
+              <option value="JPY">JPY - Japanese Yen</option>
+              <option value="THB">THB - Thai Baht</option>
+              <option value="CHF">CHF - Swiss Franc</option>
+              <option value="SGD">SGD - Singapore Dollar</option>
+              <option value="PLN">PLN - Poland złoty</option>
+              <option value="BGN">BGN - Bulgarian Lev</option>
+              <option value="TRY">TRY - Turkish lira</option>
+              <option value="CNY">CNY - Chinese Yuan</option>
+              <option value="NOK">NOK - Norwegian Krone</option>
+              <option value="NZD">NZD - New Zealand Dollar</option>
+              <option value="ZAR">ZAR - South African Rand</option>
+              <option value="MXN">MXN - Mexican Peso</option>
+              <option value="ILS">ILS - Israeli New Shekel</option>
+              <option value="KRW">KRW - South Korean Won</option>
+              <option value="MYR">MYR - Malaysian Ringgit</option>
+            </select>
+          </form>
           <input type="text" id="amount">
+
+          <button class="buttonStyle" id="conversionButton" type="submit">Convert</button>
+          <button class="buttonStyle" id="graphButton" type="submit">Graph Test</button>
         </div>
-
-        <button class="buttonStyle" id="convertButton" type="submit">Convert</button>
-        <button class="buttonStyle" id="graphButton" type="submit">Create Graph</button>
-
       </div>
 
       <!-- mainContentDivider ---------------------->
 
-      <div class="mainContentDivider"></div>
+      <div class="mainContentVerticalDivider"></div>
 
-      <!-- mainContentRight ---------------------->
+      <!-- mainContentTopRight ---------------------->
 
-      <div class="mainContentRight">
-        <h1 id="conversionTitle"> Conversion </h1>
+      <div class="mainContentTopRight">
+        <h2 id="conversionTitle"> Compare or Convert Currency </h2>
         <p id="currencyComparisonMessage"> Please select a currency. </p>
+        <textarea id="currencyResultsTextArea" rows="4" cols="50"></textarea>
+      </div>
+
+    </section>
+
+    <!-- mainContentDivider ---------------------->
+
+    <section class="horizontalDividerContainer">
+      <div class="mainContentHorizontalLeftDivider"></div>
+      <div class="mainContentHorizontalRightDivider"></div>
+    </section>
+
+    <!-- mainContentBottomContainer ------------------------------------------------->
+
+    <section class="mainContentBottomContainer">
+
+      <!-- mainContentBottomLeft ---------------------->
+
+      <div class="mainContentBottomLeft">
+        <!-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> -->
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
+
+      <!-- mainContentBottomRight ---------------------->
+
+      <div class="mainContentBottomRight">
+        <h1 id="conversionTitle"> Blank </h1>
+        <p id="currencyComparisonMessage"> Please select a currency to compare or convert. </p>
         <textarea id="currencyResultsTextArea" rows="4" cols="50"></textarea>
         <!-- <input type="text" id="currencyValue"> -->
       </div>
+
+      <!-- mainContentDivider ---------------------->
+
+      <div class="mainContentVerticalDivider"></div>
 
     </section>
 
     <!-- Footer -->
     <div class="footer"></div>
 
-    <!-- Script -->
+    <!-- Scripts ---------------------------------->
+
+    <!-- currencyAPI script -->
     <script src="currencyAPI.js"></script>
+
+    <!-- currencyConversion script -->
+    <script src="currencyConversion.js"></script>
+
+    <!-- graph script -->
+    <script src="graph.js"></script>
+
+    <!-- Canvas script -->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
   </body>
 </html>

@@ -1,20 +1,24 @@
 // Exchange rates against given currency ---------------------------------------
 
-$("#compareButton").click(function(){
+$("#conversionButton").click(function(){
   console.log("Click registered");
 
   // Clears text area
   $("#currencyResultsTextArea").val("");
 
   // Get chosen currencies from dropdown
-  var ccOne = document.getElementById("currencyCompareDropdown");
-  var chosenCurrencyCompare = ccOne.options[ccOne.selectedIndex].value;
+  var ccOne = document.getElementById("currencyConversionDropdown");
+  var chosenCurrencyConversion = ccOne.options[ccOne.selectedIndex].value;
 
-  console.log(chosenCurrencyCompare);
+  // Get amount from text field
+  var amount = document.getElementById("amount").value;
+
+  console.log(chosenCurrencyConversion);
+  console.log(amount);
 
   // URL---------------------------------------
 
-  var url = "https://api.exchangeratesapi.io/latest?base="+ chosenCurrencyCompare;
+  var url = "https://api.exchangeratesapi.io/latest?base="+ chosenCurrencyConversion;
 
   $.getJSON( url , function(data) {
 
@@ -43,12 +47,12 @@ $("#compareButton").click(function(){
                     , "KRW": "South Korean Won", "MYR": "Malaysian Ringgit"};
 
     // Initial title and conversion message on text area
-    document.getElementById("conversionTitle").innerHTML = ("Exchange Rate Comparison");
-    document.getElementById("currencyComparisonMessage").innerHTML = ("1 " + chosenCurrencyCompare + " converts to: \n");
+        document.getElementById("conversionTitle").innerHTML = ("Currency Conversion");
+    document.getElementById("currencyComparisonMessage").innerHTML = (amount + " " + chosenCurrencyConversion + " converts to: \n");
 
     for (var i = 0; i < currencyArray.length; i++) {
-      if (currencyArray[i] !== chosenCurrencyCompare) {
-        var fullRate = ratesArray[currencyArray[i]];
+      if (currencyArray[i] !== chosenCurrencyConversion) {
+        var fullRate = amount * (ratesArray[currencyArray[i]]);
 
         rounded2DecRate = Math.round(fullRate * 100) / 100;
 
