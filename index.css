@@ -2,6 +2,7 @@
 
 body {
   margin: 0%;
+  font-family: Arial;
 }
 
 /* Header ------------------------------------------------------------------- */
@@ -34,53 +35,153 @@ body {
   border-right: 25px solid transparent;
 }
 
-/* mainContent -------------------------------------------------------------- */
+/* mainContent  ------------------------------------------------------------- */
 
-.mainContentContainer {
+.mainContentTopContainer {
   padding: 20px;
-  height: 425px;
-  /* width: 100%; */
+  height: 100%;
+  overflow: hidden;
   background: yellow;
 }
 
-/* mainContentLeft ---------------------------------------------------------- */
-
-.mainContentLeft {
-  float: left;
+.mainContentBottomContainer {
+  padding: 20px;
   height: 100%;
+  overflow: hidden;
+  background: lightsalmon;
+}
+
+/* mainContentTopLeft ------------------------------------------------------- */
+
+.mainContentTopLeft {
+  float: left;
+  height: 370px;
   width: 45%;
   background: green;
 }
 
-/* mainContentDivider ---------------------------------------------------------- */
+.buttonStyle {
+  margin-top: 20px;
+}
 
-.mainContentDivider {
+.topLeftText {
+  font-size: 30px;
+}
+
+#contentTopLeft {
+  margin-left: 10%;
+}
+
+/* mainContentTopRight ------------------------------------------------------ */
+
+.mainContentTopRight {
+  float: right;
+  height: 370px;
+  width: 45%;
+  background: blue;
+}
+
+.topRightText {
+  margin-left: 10%;
+  font-size: 25px;
+}
+
+#currencyResultsTextArea {
+  margin-left: 10%;
+  width: 80%;
+  height: 55%;
+  font-size: 30px;
+  line-height: 50px;
+}
+
+/* Dividers ----------------------------------------------------------------- */
+
+.mainContentVerticalTopDivider {
   display: inline-block;
   position: absolute;
-  height: 60%;
+  margin-top: 1%;
+  height: 50%;
   left: 49.75%;
   width: 0.5%;
   background: #D8D8D8;
   border-radius: 10px;
 }
 
-.dividerLine {
-
+.mainContentVerticalBottomDivider {
+  display: inline-block;
+  position: absolute;
+  margin-top: 1%;
+  height: 50%;
+  right: 40%;
+  width: 0.5%;
+  background: #D8D8D8;
+  border-radius: 10px;
 }
 
-/* mainContentRight --------------------------------------------------------- */
+.mainContentHorizontalLeftDivider {
+  display: inline-block;
+  position: absolute;
+  margin-top: 0.5%;
+  height: 1%;
+  left: 2.5%;
+  width: 42.50%;
+  background: #D8D8D8;
+  border-radius: 10px;
+}
 
-.mainContentRight {
+.mainContentHorizontalRightDivider {
+  display: inline-block;
+  position: absolute;
+  margin-top: 0.5%;
+  height: 1%;
+  right: 2.5%;
+  width: 42.50%;
+  background: #D8D8D8;
+  border-radius: 10px;
+}
+
+.horizontalDividerContainer {
+  width: 100%;
+  height: 25px;
+  background: lightyellow;
+}
+
+/* mainContentBottomLeft ---------------------------------------------------- */
+
+#mainContentBottomLeft {
+  float: left;
+  height: 370px;
+  width: 55%;
+  background: LightSkyBlue;
+}
+
+/* #myChart {
+  height: 350px;
+  width: 55%;
+} */
+
+/* mainContentBottomRight --------------------------------------------------- */
+
+.mainContentBottomRight {
   float: right;
-  height: 100%;
-  width: 45%;
-  background: blue;
+  height: 370px;
+  width: 35%;
+  background: pink;
+}
+
+.currencyGraphTitle {
+  font-size: 30px;
+}
+
+.contentBottomRight {
+  margin-left: 10%;
 }
 
 /* Footer ------------------------------------------------------------------- */
 
 .footer {
-  right: 0px;
+  /* right: 0px; */
+  bottom: 0px;
   border-bottom: 25px solid #D8D8D8;
   border-left: 25px solid transparent;
 }
