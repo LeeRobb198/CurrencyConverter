@@ -64,16 +64,12 @@ body {
   margin-top: 20px;
 }
 
-#currencyTitle {
+.topLeftText {
   font-size: 30px;
 }
 
 #contentTopLeft {
   margin-left: 10%;
-}
-
-#currencyConversionTitle {
-  font-size: 30px;
 }
 
 /* mainContentTopRight ------------------------------------------------------ */
@@ -85,7 +81,7 @@ body {
   background: blue;
 }
 
-#conversionTitle {
+.topRightText {
   margin-left: 10%;
   font-size: 25px;
 }
@@ -98,19 +94,25 @@ body {
   line-height: 50px;
 }
 
-#currencyComparisonMessage {
-  font-size: 25px;
-  margin-left: 10%;
-}
-
 /* Dividers ----------------------------------------------------------------- */
 
-.mainContentVerticalDivider {
+.mainContentVerticalTopDivider {
   display: inline-block;
   position: absolute;
   margin-top: 1%;
   height: 50%;
   left: 49.75%;
+  width: 0.5%;
+  background: #D8D8D8;
+  border-radius: 10px;
+}
+
+.mainContentVerticalBottomDivider {
+  display: inline-block;
+  position: absolute;
+  margin-top: 1%;
+  height: 50%;
+  right: 40%;
   width: 0.5%;
   background: #D8D8D8;
   border-radius: 10px;
@@ -146,21 +148,33 @@ body {
 
 /* mainContentBottomLeft ---------------------------------------------------- */
 
-.mainContentBottomLeft {
-
+#mainContentBottomLeft {
   float: left;
   height: 370px;
-  width: 45%;
+  width: 55%;
   background: LightSkyBlue;
 }
+
+/* #myChart {
+  height: 350px;
+  width: 55%;
+} */
 
 /* mainContentBottomRight --------------------------------------------------- */
 
 .mainContentBottomRight {
   float: right;
   height: 370px;
-  width: 45%;
+  width: 35%;
   background: pink;
+}
+
+.currencyGraphTitle {
+  font-size: 30px;
+}
+
+.contentBottomRight {
+  margin-left: 10%;
 }
 
 /* Footer ------------------------------------------------------------------- */

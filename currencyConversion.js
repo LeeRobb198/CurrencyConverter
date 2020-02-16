@@ -47,7 +47,7 @@ $("#conversionButton").click(function(){
                     , "KRW": "South Korean Won", "MYR": "Malaysian Ringgit"};
 
     // Initial title and conversion message on text area
-        document.getElementById("conversionTitle").innerHTML = ("Currency Conversion");
+    document.getElementById("conversionTitle").innerHTML = ("Currency Conversion");
     document.getElementById("currencyComparisonMessage").innerHTML = (amount + " " + chosenCurrencyConversion + " converts to: \n");
 
     for (var i = 0; i < currencyArray.length; i++) {
