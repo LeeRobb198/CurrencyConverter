@@ -9,10 +9,10 @@ $("#graphButton").click(function(){
   var chosenCurrency = ccLow.options[ccLow.selectedIndex].value;
 
   // Get the lowest exchange from text field
-  var lowestExchangeRateValue = document.getElementById("lowestExchange").value;
+  var minimumExchangeRateValue = document.getElementById("minimumExchange").value;
 
   // Get the highest exchange from text field
-  var highestExchangeRateValue = document.getElementById("highestExchange").value;
+  var maximumExchangeRateValue = document.getElementById("maximumExchange").value;
 
   // URL---------------------------------------
 
@@ -48,7 +48,7 @@ $("#graphButton").click(function(){
                     , "KRW": "South Korean Won - KRW", "MYR": "Malaysian Ringgit - MYR"};
 
     for (var i = 0; i < currencyArray.length; i++) {
-      if ((ratesArray[currencyArray[i]] < lowestExchangeRateValue) && (ratesArray[currencyArray[i]] > highestExchangeRateValue)) {
+      if ((ratesArray[currencyArray[i]] > minimumExchangeRateValue) && (ratesArray[currencyArray[i]] < maximumExchangeRateValue)) {
         if (currencyArray[i] !== chosenCurrency) {
           var fullRate = ratesArray[currencyArray[i]];
 
@@ -103,6 +103,7 @@ $("#graphButton").click(function(){
               'rgba(144, 144, 144, 1)',
               'rgba(152, 152, 152, 1)'
             ],
+            borderColor: 'rgba(64, 64, 64, 1)',
             borderWidth: 1 // Specify bar border width
           }]
         },
@@ -111,9 +112,9 @@ $("#graphButton").click(function(){
           maintainAspectRatio: false, // Add to prevent default behavior of full-width/height
           title: {
             display: true,
-            text: 'Exchange Rates' + ' ' + chosenCurrency,
-            fontSize: 20,
-            fontColor: 'rgba(255, 255, 255, 1)',
+            text: 'Exchange Rates: ' + chosenCurrency,
+            fontSize: 30,
+            fontColor: 'rgba(64, 64, 64, 1)',
           },
           legend: {
             display: false,
@@ -133,10 +134,17 @@ $("#graphButton").click(function(){
 
     var chart = BuildChart(selectedCurrencyArray, exchangeRatesArray, "Exchange Rates");
   });
+
+  document.getElementById("graphButton").disabled = true;
+  document.getElementById("clearGraphButton").disabled = false;
+
 });
 
 $("#clearGraphButton").click(function(){
   var barChartContent = document.getElementById('mainContentBottomLeft');
   barChartContent.innerHTML = '';
   $('#mainContentBottomLeft').append('<canvas id="myChart"></canvas>');
+
+  document.getElementById("graphButton").disabled = false;
+  document.getElementById("clearGraphButton").disabled = true;
 });
