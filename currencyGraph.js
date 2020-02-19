@@ -60,9 +60,9 @@ $("#graphButton").click(function(){
       }
     }
 
-    function BuildChart(labels, values, chartTitle) {
-      var ctx = document.getElementById("myChart").getContext('2d');
-      var myChart = new Chart(ctx, {
+    function BuildBarChart(labels, values, chartTitle) {
+      var ctx = document.getElementById("barChart").getContext('2d');
+      var myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: labels, // Our labels
@@ -129,10 +129,10 @@ $("#graphButton").click(function(){
           }
         }
       });
-      return myChart;
+      return myBarChart;
     }
 
-    var chart = BuildChart(selectedCurrencyArray, exchangeRatesArray, "Exchange Rates");
+    var chart = BuildBarChart(selectedCurrencyArray, exchangeRatesArray, "Exchange Rates");
   });
 
   document.getElementById("graphButton").disabled = true;
@@ -141,9 +141,9 @@ $("#graphButton").click(function(){
 });
 
 $("#clearGraphButton").click(function(){
-  var barChartContent = document.getElementById('mainContentBottomLeft');
+  var barChartContent = document.getElementById('mainContentCentreLeft');
   barChartContent.innerHTML = '';
-  $('#mainContentBottomLeft').append('<canvas id="myChart"></canvas>');
+  $('#mainContentCentreLeft').append('<canvas id="barChart"></canvas>');
 
   document.getElementById("graphButton").disabled = false;
   document.getElementById("clearGraphButton").disabled = true;
