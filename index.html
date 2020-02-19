@@ -162,20 +162,20 @@
       <div class="mainContentHorizontalRightDivider"></div>
     </section>
 
-    <!-- mainContentBottomContainer ------------------------------------------------->
+    <!-- mainContentCentreContainer ------------------------------------------------->
 
-    <section class="mainContentBottomContainer">
+    <section class="mainContentCentreContainer">
 
-      <!-- mainContentBottomLeft ---------------------->
+      <!-- mainContentCentreLeft ---------------------->
 
-      <div id="mainContentBottomLeft">
-        <canvas id="myChart"></canvas>
+      <div id="mainContentCentreLeft">
+        <canvas id="barChart"></canvas>
       </div>
 
-      <!-- mainContentBottomRight ---------------------->
+      <!-- mainContentCentreRight ---------------------->
 
-      <div class="mainContentBottomRight">
-        <div class="contentBottomRight">
+      <div class="mainContentCentreRight">
+        <div class="contentCentreRight">
           <h1 class="currencyGraphTitle"> Currency Graphs </h1>
           <p> Visualise exchange rates against a currency: </p>
           <form>
@@ -233,6 +233,88 @@
 
       <!-- mainContentDivider ---------------------->
 
+      <div class="mainContentVerticalCentreDivider"></div>
+
+    </section>
+
+    <!-- mainContentDivider ---------------------->
+
+    <section class="horizontalDividerContainer">
+      <div class="mainContentHorizontalLeftDivider"></div>
+      <div class="mainContentHorizontalRightDivider"></div>
+    </section>
+
+    <!-- mainContentBottomContainer ------------------------------------------------->
+
+    <section class="mainContentBottomContainer">
+
+      <!-- mainContentRightLeft ---------------------->
+
+      <div id="mainContentBottomRight">
+        <canvas id="lineChart"></canvas>
+      </div>
+
+      <!-- mainContentCentreRight ---------------------->
+
+      <div class="mainContentBottomLeft">
+        <div class="contentBottomLeft">
+          <h1 class="historicExchangeRatesGraphTitle"> Historic Exchange Rates </h1>
+          <p> Visualise historic exchange rates for a currency: </p>
+          <form>
+            <div class="dropdown">
+              <select id="historicExchangeRateGraphDropdown">
+                <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
+                <option value="GBP">GBP - Pound Sterling</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="USD">USD - United States Dollar</option>
+                <option value="CAD">CAD - Canadian Dollar</option>
+                <option value="HKD">HKD - Hong Kong Dollar</option>
+                <option value="ISK">ISK - Icelandic Krona</option>
+                <option value="PHP">PHP - Philippine Peso</option>
+                <option value="DKK">DKK - Danish Krone</option>
+                <option value="HUF">HUF - Hungarian Forint</option>
+                <option value="CZK">CZK - Czech Koruna</option>
+                <option value="AUD">AUD - Australian Dollar</option>
+                <option value="RON">RON - Romanian Leu</option>
+                <option value="SEK">SEK - Swedish Krona</option>
+                <option value="IDR">IDR - Indonesian Rupiah</option>
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="BRL">BRL - Brazilian Real</option>
+                <option value="RUB">RUB - Russian Ruble</option>
+                <option value="HRK">HRK - Croatian Kuna</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+                <option value="THB">THB - Thai Baht</option>
+                <option value="CHF">CHF - Swiss Franc</option>
+                <option value="SGD">SGD - Singapore Dollar</option>
+                <option value="PLN">PLN - Poland złoty</option>
+                <option value="BGN">BGN - Bulgarian Lev</option>
+                <option value="TRY">TRY - Turkish lira</option>
+                <option value="CNY">CNY - Chinese Yuan</option>
+                <option value="NOK">NOK - Norwegian Krone</option>
+                <option value="NZD">NZD - New Zealand Dollar</option>
+                <option value="ZAR">ZAR - South African Rand</option>
+                <option value="MXN">MXN - Mexican Peso</option>
+                <option value="ILS">ILS - Israeli New Shekel</option>
+                <option value="KRW">KRW - South Korean Won</option>
+                <option value="MYR">MYR - Malaysian Ringgit</option>
+              </select>
+            </div>
+          </form>
+          <p> Search between two dates: </p>
+          <div class="textboxAlignment">
+            <input type="text" placeholder="Date" class="textboxStyle" id="startDate">
+            <input type="text" placeholder="Date" class="textboxStyle" id="endDate">
+          </div>
+
+          <div class="doubleButtonAlignment">
+            <button class="buttonStyle" id="graphHistoricButton" type="submit"> Create Graph </button>
+            <button disabled class="buttonStyle" id="clearHistoricGraphButton" type="submit"> Clear Graph</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- mainContentDivider ---------------------->
+
       <div class="mainContentVerticalBottomDivider"></div>
 
     </section>
@@ -249,12 +331,12 @@
     <script src="currencyConversion.js"></script>
 
     <!-- graph script -->
-    <script src="graph.js"></script>
+    <script src="currencyGraph.js"></script>
 
     <!-- dropdown script -->
     <script src="dropdown.js"></script>
 
-    <script src="test.js"></script>
+    <script src="historicExchangeRateGraph.js"></script>
 
     <!-- Canvas script -->
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

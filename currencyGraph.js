@@ -61,7 +61,7 @@ $("#graphButton").click(function(){
     }
 
     function BuildBarChart(labels, values, chartTitle) {
-      var ctx = document.getElementById("myChart").getContext('2d');
+      var ctx = document.getElementById("barChart").getContext('2d');
       var myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -141,9 +141,9 @@ $("#graphButton").click(function(){
 });
 
 $("#clearGraphButton").click(function(){
-  var barChartContent = document.getElementById('mainContentBottomLeft');
+  var barChartContent = document.getElementById('mainContentCentreLeft');
   barChartContent.innerHTML = '';
-  $('#mainContentBottomLeft').append('<canvas id="myChart"></canvas>');
+  $('#mainContentCentreLeft').append('<canvas id="barChart"></canvas>');
 
   document.getElementById("graphButton").disabled = false;
   document.getElementById("clearGraphButton").disabled = true;
