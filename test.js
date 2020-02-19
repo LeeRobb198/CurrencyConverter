@@ -8,16 +8,46 @@ $.getJSON( url , function(data) {
 
   var datesArray = Object.keys(data.rates);
 
-  console.log(datesArray[0]);
+  var unixDateArray = [];
 
-  // console.log(Object.keys(data.rates.));
+  var formattedDateArray = [];
 
-  console.log("Test " + data.rates['2018-05-04']['EUR']);
-
-  console.log("Test 2 " + data.rates[datesArray[0]].EUR)
-
+  // For loop converting date into unix time
   for (var i = 0; i < datesArray.length; i++) {
-    var currencyHistory = (data.rates[datesArray[i]]['GBP']);
+    var unixDate = Date.parse(datesArray[i]);
+    unixDateArray.push(unixDate)
+  }
+
+  // Sorting into correct order
+
+  sortedDatesArray = unixDateArray.sort(function(x, y){
+    return x - y;
+  });
+
+  // Convert back to date format
+
+  for (var i = 0; i < sortedDatesArray.length; i++) {
+    var specificDate = new Date(sortedDatesArray[i]);
+
+    var dd = specificDate.getDate();
+    var mm = specificDate.getMonth()+1;
+    var yyyy = specificDate.getFullYear();
+
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+
+    var formattedDate = yyyy.toString()+'-'+mm+'-'+dd;
+
+    formattedDateArray.push(formattedDate);
+  }
+
+  for (var i = 0; i < formattedDateArray.length; i++) {
+    var currencyHistory = (data.rates[formattedDateArray[i]]['GBP']);
     selectedCurrencyHistoryArray.push(currencyHistory);
   }
 
@@ -64,5 +94,5 @@ $.getJSON( url , function(data) {
     return myLineChart;
   }
 
-  var chart = BuildLineChart(datesArray, selectedCurrencyHistoryArray, "Exchange Rates History");
+  var chart = BuildLineChart(formattedDateArray, selectedCurrencyHistoryArray, "Exchange Rates History");
 });
