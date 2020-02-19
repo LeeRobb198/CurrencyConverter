@@ -60,9 +60,9 @@ $("#graphButton").click(function(){
       }
     }
 
-    function BuildChart(labels, values, chartTitle) {
+    function BuildBarChart(labels, values, chartTitle) {
       var ctx = document.getElementById("myChart").getContext('2d');
-      var myChart = new Chart(ctx, {
+      var myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: labels, // Our labels
@@ -129,10 +129,10 @@ $("#graphButton").click(function(){
           }
         }
       });
-      return myChart;
+      return myBarChart;
     }
 
-    var chart = BuildChart(selectedCurrencyArray, exchangeRatesArray, "Exchange Rates");
+    var chart = BuildBarChart(selectedCurrencyArray, exchangeRatesArray, "Exchange Rates");
   });
 
   document.getElementById("graphButton").disabled = true;

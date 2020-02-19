@@ -20,6 +20,9 @@ $("#compareButton").click(function(){
 
     ratesArray = data.rates;
 
+    console.log(data);
+    console.log(data.rates.EUR);
+
     currencyArray = ["GBP", "EUR", "USD", "CAD", "HKD", "ISK", "PHP", "DKK"
                     , "HUF", "CZK", "AUD", "RON", "SEK", "IDR", "INR", "BRL"
                     , "RUB", "HRK", "JPY", "THB", "CHF", "SGD", "PLN", "BGN"
