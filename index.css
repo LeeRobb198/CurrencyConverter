@@ -194,7 +194,7 @@ body {
 
 .mainContentBottomLeft {
   float: left;
-  height: 370px;
+  height: 400px;
   width: 35%;
   background: #E8E8E8;
 }
@@ -355,8 +355,9 @@ body {
 #currencyResultsTextArea {
   margin-left: 10%;
   margin-right: 10%;
+  margin-bottom: 3%;
   width: 80%;
-  height: 60%;
+  height: 58%;
   font-size: 30px;
   line-height: 50px;
   border: 2px solid #404040;

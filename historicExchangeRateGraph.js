@@ -3,8 +3,11 @@ $("#graphHistoricButton").click(function(){
   console.log("Click registered");
 
   // Get chosen currencies from dropdown
-  var ccLow = document.getElementById("historicExchangeRateGraphDropdown");
-  var chosenCurrency = ccLow.options[ccLow.selectedIndex].value;
+  var cc = document.getElementById("historicExchangeRateGraphDropdown");
+  var chosenCurrency = cc.options[cc.selectedIndex].value;
+
+  var ccc = document.getElementById("historicExchangeRateComparisonGraphDropdown");
+  var chosenComparisonCurrency = ccc.options[ccc.selectedIndex].value;
 
   // Get the lowest exchange from text field
   var startDate = document.getElementById("startDate").value;
@@ -57,7 +60,7 @@ $("#graphHistoricButton").click(function(){
     }
 
     for (var i = 0; i < formattedDateArray.length; i++) {
-      var currencyHistory = (data.rates[formattedDateArray[i]]['USD']);
+      var currencyHistory = (data.rates[formattedDateArray[i]][chosenComparisonCurrency]);
       selectedCurrencyHistoryArray.push(currencyHistory);
     }
 
