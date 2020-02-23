@@ -14,7 +14,11 @@ $("#graphHistoricButton").click(function(){
 
   var url = "https://api.exchangeratesapi.io/history?start_at=" + startDate+ "&end_at=" + endDate + "&base=" + chosenCurrency;
 
+  console.log("Step 1");
+
   $.getJSON( url , function(data) {
+
+    console.log("Step 2 - Slowest step");
 
     var selectedCurrencyHistoryArray = [];
 
@@ -30,10 +34,14 @@ $("#graphHistoricButton").click(function(){
       unixDateArray.push(unixDate)
     }
 
+    console.log("Step 3");
+
     // Sorting into correct order
     sortedDatesArray = unixDateArray.sort(function(x, y){
       return x - y;
     });
+
+    console.log("Step 4");
 
     // Convert back to date format
     for (var i = 0; i < sortedDatesArray.length; i++) {
@@ -56,10 +64,14 @@ $("#graphHistoricButton").click(function(){
       formattedDateArray.push(formattedDate);
     }
 
+    console.log("Step 5");
+
     for (var i = 0; i < formattedDateArray.length; i++) {
       var currencyHistory = (data.rates[formattedDateArray[i]]['USD']);
       selectedCurrencyHistoryArray.push(currencyHistory);
     }
+
+    console.log("Step 6");
 
     function BuildLineChart(labels, values, chartTitle) {
       var ctx = document.getElementById("lineChart").getContext('2d');
@@ -105,6 +117,8 @@ $("#graphHistoricButton").click(function(){
     }
 
     var chart = BuildLineChart(formattedDateArray, selectedCurrencyHistoryArray, "Exchange Rates History");
+
+    console.log("Step 7");
   });
 
   document.getElementById("graphHistoricButton").disabled = true;
