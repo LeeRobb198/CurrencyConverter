@@ -1,10 +1,14 @@
-$("#graphHistoricButton").click(function(){
+$("#graphHistoricButton").click(async function(){
 
   console.log("Click registered");
 
-  // Get chosen currencies from dropdown
-  var ccLow = document.getElementById("historicExchangeRateGraphDropdown");
-  var chosenCurrency = ccLow.options[ccLow.selectedIndex].value;
+  // Get chosen currency from dropdown
+  var cc = document.getElementById("historicExchangeRateGraphDropdown");
+  var chosenCurrency = cc.options[cc.selectedIndex].value;
+
+  // Get chosen comparison currency from dropdown
+  var ccc = document.getElementById("historicExchangeRateGraphDropdownComparison");
+  var chosenComparisonCurrency = ccc.options[ccc.selectedIndex].value;
 
   // Get the lowest exchange from text field
   var startDate = document.getElementById("startDate").value;
@@ -12,114 +16,119 @@ $("#graphHistoricButton").click(function(){
   // Get the highest exchange from text field
   var endDate = document.getElementById("endDate").value;
 
-  var url = "https://api.exchangeratesapi.io/history?start_at=" + startDate+ "&end_at=" + endDate + "&base=" + chosenCurrency;
+  var currencyData = {chosenCurrency, startDate, endDate};
 
-  console.log("Step 1");
+  var options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(currencyData)
+  }
 
-  $.getJSON( url , function(data) {
+  // Sends request to server with the chosenCurrencyCompare
+  var response = await fetch('/historyAPI', options);
 
-    console.log("Step 2 - Slowest step");
+  // Returns JSON data from server
+  var data = await response.json();
 
-    var selectedCurrencyHistoryArray = [];
+  // Post Server ---------------------------------------------------------------
 
-    var datesArray = Object.keys(data.rates);
+  var selectedCurrencyHistoryArray = [];
 
-    var unixDateArray = [];
+  var datesArray = Object.keys(data.body.rates);
 
-    var formattedDateArray = [];
+  var unixDateArray = [];
 
-    // For loop converting date into unix time
-    for (var i = 0; i < datesArray.length; i++) {
-      var unixDate = Date.parse(datesArray[i]);
-      unixDateArray.push(unixDate)
+  var formattedDateArray = [];
+
+  // For loop converting date into unix time
+  for (var i = 0; i < datesArray.length; i++) {
+    var unixDate = Date.parse(datesArray[i]);
+    unixDateArray.push(unixDate)
+  }
+
+  // Sorting into correct order
+  sortedDatesArray = unixDateArray.sort(function(x, y){
+    return x - y;
+  });
+
+  // Convert back to date format
+  for (var i = 0; i < sortedDatesArray.length; i++) {
+    var specificDate = new Date(sortedDatesArray[i]);
+
+    var dd = specificDate.getDate();
+    var mm = specificDate.getMonth()+1;
+    var yyyy = specificDate.getFullYear();
+
+    if (dd < 10) {
+      dd = "0" + dd;
     }
 
-    console.log("Step 3");
-
-    // Sorting into correct order
-    sortedDatesArray = unixDateArray.sort(function(x, y){
-      return x - y;
-    });
-
-    console.log("Step 4");
-
-    // Convert back to date format
-    for (var i = 0; i < sortedDatesArray.length; i++) {
-      var specificDate = new Date(sortedDatesArray[i]);
-
-      var dd = specificDate.getDate();
-      var mm = specificDate.getMonth()+1;
-      var yyyy = specificDate.getFullYear();
-
-      if (dd < 10) {
-        dd = "0" + dd;
-      }
-
-      if (mm < 10) {
-        mm = "0" + mm;
-      }
-
-      var formattedDate = yyyy.toString()+'-'+mm+'-'+dd;
-
-      formattedDateArray.push(formattedDate);
+    if (mm < 10) {
+      mm = "0" + mm;
     }
 
-    console.log("Step 5");
+    var formattedDate = yyyy.toString()+'-'+mm+'-'+dd;
 
-    for (var i = 0; i < formattedDateArray.length; i++) {
-      var currencyHistory = (data.rates[formattedDateArray[i]]['USD']);
-      selectedCurrencyHistoryArray.push(currencyHistory);
-    }
+    formattedDateArray.push(formattedDate);
+  }
 
-    console.log("Step 6");
+  for (var i = 0; i < formattedDateArray.length; i++) {
+    var currencyHistory = (data.body.rates[formattedDateArray[i]][chosenComparisonCurrency]);
+    selectedCurrencyHistoryArray.push(currencyHistory);
+  }
 
-    function BuildLineChart(labels, values, chartTitle) {
-      var ctx = document.getElementById("lineChart").getContext('2d');
-      var myLineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: labels, // Our labels
-          datasets: [{
-            label: chartTitle, // Name the series
-            data: values, // Our values
-            backgroundColor: [ // Specify custom colors
-              'rgba(72, 72, 72, 1)',
-            ],
-            fill: false,
-            radius: 2,
-            borderColor: 'rgba(64, 64, 64, 1)',
-            borderWidth: 2 // Specify bar border width
+  // Line Chart Builder
+  function BuildLineChart(labels, values, chartTitle) {
+    var ctx = document.getElementById("lineChart").getContext('2d');
+    var myLineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels, // Our labels
+        datasets: [{
+          label: chartTitle, // Name the series
+          data: values, // Our values
+          backgroundColor: [ // Specify custom colors
+            'rgba(72, 72, 72, 1)',
+          ],
+          fill: false,
+          radius: 2,
+          borderColor: 'rgba(64, 64, 64, 1)',
+          borderWidth: 2 // Specify bar border width
+        }]
+      },
+      options: {
+        responsive: true, // Instruct chart js to respond nicely.
+        maintainAspectRatio: false, // Add to prevent default behavior of full-width/height
+        title: {
+          display: true,
+          text: 'Exchange Rate History: ' + chosenCurrency + ' Against ' + chosenComparisonCurrency,
+          fontSize: 30,
+          fontColor: 'rgba(64, 64, 64, 1)',
+        },
+        legend: {
+          display: false,
+        },
+        gridLines: {
+          display: false,
+        },
+        scales:{
+          xAxes: [{
+              display: true,
           }]
         },
-        options: {
-          responsive: true, // Instruct chart js to respond nicely.
-          maintainAspectRatio: false, // Add to prevent default behavior of full-width/height
-          title: {
-            display: true,
-            text: 'Exchange Rate History: ' + chosenCurrency,
-            fontSize: 30,
-            fontColor: 'rgba(64, 64, 64, 1)',
-          },
-          legend: {
-            display: false,
-          },
-          gridLines: {
-            display: false,
-          },
-          scales:{
-            xAxes: [{
-                display: true,
-            }]
-          },
-        }
-      });
-      return myLineChart;
-    }
+        elements: {
+            line: {
+                tension: 0 // disables bezier curves
+            }
+        },
+      }
+    });
+    return myLineChart;
+  }
 
-    var chart = BuildLineChart(formattedDateArray, selectedCurrencyHistoryArray, "Exchange Rates History");
-
-    console.log("Step 7");
-  });
+  var chart = BuildLineChart(formattedDateArray, selectedCurrencyHistoryArray, "Exchange Rates History");
 
   document.getElementById("graphHistoricButton").disabled = true;
   document.getElementById("clearHistoricGraphButton").disabled = false;

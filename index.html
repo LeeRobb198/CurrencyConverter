@@ -19,10 +19,6 @@
     <!-- Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/0.6.6/chartjs-plugin-zoom.js"></script>
-
   </head>
 
 <!-- Body --------------------------------------------------------------------->
@@ -35,18 +31,18 @@
 
     <div class="headerLine"></div>
 
-    <!-- mainContentTopContainer ------------------------------------------------->
+    <!-- mainContentTopContainer ---------------------------------------------->
 
     <section class="mainContentTopContainer">
 
-      <!-- mainContentTopLeft ----------------------->
+      <!-- mainContentTopLeft ------------------------------------------------->
 
       <div class="mainContentTopLeft">
         <div id="contentTop">
-          <h2 class="topLeftText"> Currency Rates </h2>
+          <h2 class="contentTitle"> Currency Rates </h2>
           <p> Compare exchange rates against a currency: </p>
           <form>
-            <div class="dropdown">
+            <div class="currencyDropdown">
               <select id="currencyCompareDropdown">
                 <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
@@ -90,13 +86,13 @@
             <button class="buttonStyle" id="compareButton" type="submit">Compare</button>
           </div>
 
-          <!-- Currency value to convert ----------->
+          <!-- Currency value to convert -------------------------------------->
 
-          <h2 class="topLeftText"> Currency Conversion </h2>
+          <h2 class="contentTitle"> Currency Conversion </h2>
           <p> Find out how much your currency is worth: </p>
 
           <form>
-            <div class="dropdown">
+            <div class="currencyDropdown">
               <select id="currencyConversionDropdown">
                 <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
@@ -143,15 +139,15 @@
         </div>
       </div>
 
-      <!-- mainContentDivider ---------------------->
+      <!-- mainContentDivider ------------------------------------------------->
 
       <div class="mainContentVerticalTopDivider"></div>
 
-      <!-- mainContentTopRight ---------------------->
+      <!-- mainContentTopRight ------------------------------------------------>
 
       <div class="mainContentTopRight">
         <div id="contentTop">
-          <h2 class="topRightText" id="conversionTitle"> Compare or Convert Currency </h2>
+          <h2 class="contentTitle" id="conversionTitle"> Compare or Convert Currency </h2>
           <p  id="currencyComparisonMessage"> Please select a currency. </p>
         </div>
         <textarea readonly id="currencyResultsTextArea" rows="4" cols="50"></textarea>
@@ -159,31 +155,31 @@
 
     </section>
 
-    <!-- mainContentDivider ---------------------->
+    <!-- mainContentDivider --------------------------------------------------->
 
     <section class="horizontalDividerContainer">
       <div class="mainContentHorizontalLeftDivider"></div>
       <div class="mainContentHorizontalRightDivider"></div>
     </section>
 
-    <!-- mainContentCentreContainer ------------------------------------------------->
+    <!-- mainContentCentreContainer ------------------------------------------->
 
     <section class="mainContentCentreContainer">
 
-      <!-- mainContentCentreLeft ---------------------->
+      <!-- mainContentCentreLeft ---------------------------------------------->
 
       <div id="mainContentCentreLeft">
         <canvas id="barChart"></canvas>
       </div>
 
-      <!-- mainContentCentreRight ---------------------->
+      <!-- mainContentCentreRight --------------------------------------------->
 
       <div class="mainContentCentreRight">
         <div class="contentCentreRight">
-          <h1 class="currencyGraphTitle"> Currency Graphs </h1>
+          <h1 class="contentTitle"> Currency Graphs </h1>
           <p> Visualise exchange rates against a currency: </p>
           <form>
-            <div class="dropdown">
+            <div class="currencyDropdown">
               <select id="currencyCompareGraphDropdown">
                 <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
@@ -235,38 +231,79 @@
         </div>
       </div>
 
-      <!-- mainContentDivider ---------------------->
+      <!-- mainContentDivider ------------------------------------------------->
 
       <div class="mainContentVerticalCentreDivider"></div>
 
     </section>
 
-    <!-- mainContentDivider ---------------------->
+    <!-- mainContentDivider --------------------------------------------------->
 
     <section class="horizontalDividerContainer">
       <div class="mainContentHorizontalLeftDivider"></div>
       <div class="mainContentHorizontalRightDivider"></div>
     </section>
 
-    <!-- mainContentBottomContainer ------------------------------------------------->
+    <!-- mainContentBottomContainer ------------------------------------------->
 
     <section class="mainContentBottomContainer">
 
-      <!-- mainContentRightLeft ---------------------->
+      <!-- mainContentRightLeft ----------------------------------------------->
 
       <div id="mainContentBottomRight">
         <canvas id="lineChart"></canvas>
       </div>
 
-      <!-- mainContentCentreRight ---------------------->
+      <!-- mainContentCentreRight --------------------------------------------->
 
       <div class="mainContentBottomLeft">
         <div class="contentBottomLeft">
-          <h1 class="historicExchangeRatesGraphTitle"> Historic Exchange Rates </h1>
+          <h1 class="contentTitle"> Historic Exchange Rates </h1>
           <p> Visualise historic exchange rates for a currency: </p>
           <form>
-            <div class="dropdown">
+            <div class="currencyDropdown">
               <select id="historicExchangeRateGraphDropdown">
+                <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
+                <option value="GBP">GBP - Pound Sterling</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="USD">USD - United States Dollar</option>
+                <option value="CAD">CAD - Canadian Dollar</option>
+                <option value="HKD">HKD - Hong Kong Dollar</option>
+                <option value="ISK">ISK - Icelandic Krona</option>
+                <option value="PHP">PHP - Philippine Peso</option>
+                <option value="DKK">DKK - Danish Krone</option>
+                <option value="HUF">HUF - Hungarian Forint</option>
+                <option value="CZK">CZK - Czech Koruna</option>
+                <option value="AUD">AUD - Australian Dollar</option>
+                <option value="RON">RON - Romanian Leu</option>
+                <option value="SEK">SEK - Swedish Krona</option>
+                <option value="IDR">IDR - Indonesian Rupiah</option>
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="BRL">BRL - Brazilian Real</option>
+                <option value="RUB">RUB - Russian Ruble</option>
+                <option value="HRK">HRK - Croatian Kuna</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+                <option value="THB">THB - Thai Baht</option>
+                <option value="CHF">CHF - Swiss Franc</option>
+                <option value="SGD">SGD - Singapore Dollar</option>
+                <option value="PLN">PLN - Poland złoty</option>
+                <option value="BGN">BGN - Bulgarian Lev</option>
+                <option value="TRY">TRY - Turkish lira</option>
+                <option value="CNY">CNY - Chinese Yuan</option>
+                <option value="NOK">NOK - Norwegian Krone</option>
+                <option value="NZD">NZD - New Zealand Dollar</option>
+                <option value="ZAR">ZAR - South African Rand</option>
+                <option value="MXN">MXN - Mexican Peso</option>
+                <option value="ILS">ILS - Israeli New Shekel</option>
+                <option value="KRW">KRW - South Korean Won</option>
+                <option value="MYR">MYR - Malaysian Ringgit</option>
+              </select>
+            </div>
+          </form>
+          <p> Compared against:</p>
+          <form>
+            <div class="currencyDropdown">
+              <select id="historicExchangeRateGraphDropdownComparison">
                 <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
                 <option value="EUR">EUR - Euro</option>
@@ -317,7 +354,7 @@
         </div>
       </div>
 
-      <!-- mainContentDivider ---------------------->
+      <!-- mainContentDivider ------------------------------------------------->
 
       <div class="mainContentVerticalBottomDivider"></div>
 
@@ -326,13 +363,10 @@
     <!-- Footer -->
     <div class="footer"></div>
 
-    <!-- Scripts ---------------------------------->
+    <!-- Scripts -------------------------------------------------------------->
 
     <!-- currencyAPI script -->
     <script src="currencyAPI.js"></script>
-
-    <!-- currencyTest script -->
-    <script src="currencyTest.js"></script>
 
     <!-- currencyConversion script -->
     <script src="currencyConversion.js"></script>
@@ -343,7 +377,8 @@
     <!-- dropdown script -->
     <script src="dropdown.js"></script>
 
-    <!-- <script src="historicExchangeRateGraph.js"></script> -->
+    <!-- historicExchangeRateGraph script -->
+    <script src="historicExchangeRateGraph.js"></script>
 
     <!-- Canvas script -->
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
