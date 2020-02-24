@@ -16,6 +16,7 @@ $("#compareButton").click(function(){
 
   var url = "https://api.exchangeratesapi.io/latest?base="+ chosenCurrencyCompare;
 
+
   $.getJSON( url , function(data) {
 
     ratesArray = data.rates;
