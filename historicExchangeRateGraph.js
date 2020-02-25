@@ -1,5 +1,6 @@
-$("#graphHistoricButton").click(async function(){
+// Creates a graph of historic exchange rates against a given currency ---------
 
+$("#graphHistoricButton").click(async function(){
   console.log("Click registered");
 
   // Get chosen currency from dropdown
@@ -10,14 +11,16 @@ $("#graphHistoricButton").click(async function(){
   var ccc = document.getElementById("historicExchangeRateGraphDropdownComparison");
   var chosenComparisonCurrency = ccc.options[ccc.selectedIndex].value;
 
-  // Get the lowest exchange from text field
+  // Get the start date
   var startDate = document.getElementById("startDate").value;
 
-  // Get the highest exchange from text field
+  // Get the end date
   var endDate = document.getElementById("endDate").value;
 
+  // Array to be sent to server
   var currencyData = {chosenCurrency, startDate, endDate};
 
+  // What will be sent / method used to the server
   var options = {
     method: 'POST',
     headers: {
@@ -26,20 +29,18 @@ $("#graphHistoricButton").click(async function(){
     body: JSON.stringify(currencyData)
   }
 
-  // Sends request to server with the chosenCurrencyCompare
+  // Sends request to server
   var response = await fetch('/historyAPI', options);
 
   // Returns JSON data from server
   var data = await response.json();
 
-  // Post Server ---------------------------------------------------------------
+  // Post Server Request -------------------------------------------------------
 
+  // Constructs arrays
   var selectedCurrencyHistoryArray = [];
-
   var datesArray = Object.keys(data.body.rates);
-
   var unixDateArray = [];
-
   var formattedDateArray = [];
 
   // For loop converting date into unix time
@@ -48,7 +49,7 @@ $("#graphHistoricButton").click(async function(){
     unixDateArray.push(unixDate)
   }
 
-  // Sorting into correct order
+  // Sorting dates in order
   sortedDatesArray = unixDateArray.sort(function(x, y){
     return x - y;
   });
@@ -69,38 +70,41 @@ $("#graphHistoricButton").click(async function(){
       mm = "0" + mm;
     }
 
+    // Formats date to yyyy-mm-dd
     var formattedDate = yyyy.toString()+'-'+mm+'-'+dd;
 
+    // Adds formatted date to array to be used in graph
     formattedDateArray.push(formattedDate);
   }
 
+  // Retrieves exchange rate of given date
   for (var i = 0; i < formattedDateArray.length; i++) {
     var currencyHistory = (data.body.rates[formattedDateArray[i]][chosenComparisonCurrency]);
     selectedCurrencyHistoryArray.push(currencyHistory);
   }
 
-  // Line Chart Builder
+  // Line graph format
   function BuildLineChart(labels, values, chartTitle) {
     var ctx = document.getElementById("lineChart").getContext('2d');
     var myLineChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: labels, // Our labels
+        labels: labels,
         datasets: [{
-          label: chartTitle, // Name the series
-          data: values, // Our values
-          backgroundColor: [ // Specify custom colors
+          label: chartTitle,
+          data: values,
+          backgroundColor: [
             'rgba(72, 72, 72, 1)',
           ],
           fill: false,
           radius: 2,
           borderColor: 'rgba(64, 64, 64, 1)',
-          borderWidth: 2 // Specify bar border width
+          borderWidth: 2
         }]
       },
       options: {
-        responsive: true, // Instruct chart js to respond nicely.
-        maintainAspectRatio: false, // Add to prevent default behavior of full-width/height
+        responsive: true,
+        maintainAspectRatio: false,
         title: {
           display: true,
           text: 'Exchange Rate History: ' + chosenCurrency + ' Against ' + chosenComparisonCurrency,
@@ -120,7 +124,7 @@ $("#graphHistoricButton").click(async function(){
         },
         elements: {
             line: {
-                tension: 0 // disables bezier curves
+                tension: 0
             }
         },
       }
@@ -128,18 +132,24 @@ $("#graphHistoricButton").click(async function(){
     return myLineChart;
   }
 
+  // Creates graph
   var chart = BuildLineChart(formattedDateArray, selectedCurrencyHistoryArray, "Exchange Rates History");
 
+  // Enables and disables buttons
   document.getElementById("graphHistoricButton").disabled = true;
   document.getElementById("clearHistoricGraphButton").disabled = false;
 
-});
+}); // End button
 
 $("#clearHistoricGraphButton").click(function(){
+  // Removes content of div
   var lineChartContent = document.getElementById('mainContentBottomRight');
   lineChartContent.innerHTML = '';
+
+  // Adds a new canvas to the div
   $('#mainContentBottomRight').append('<canvas id="lineChart"></canvas>');
 
+  // Enables and disables buttons
   document.getElementById("graphHistoricButton").disabled = false;
   document.getElementById("clearHistoricGraphButton").disabled = true;
-});
+}); // End button

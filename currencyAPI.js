@@ -7,22 +7,23 @@ $("#compareButton").click(function(){
   $("#currencyResultsTextArea").val("");
 
   // Get chosen currencies from dropdown
-  var ccOne = document.getElementById("currencyCompareDropdown");
-  var chosenCurrencyCompare = ccOne.options[ccOne.selectedIndex].value;
+  var cc = document.getElementById("currencyCompareDropdown");
+  var chosenCurrency = cc.options[cc.selectedIndex].value;
 
-  console.log(chosenCurrencyCompare);
+  // Testing
+  // console.log(chosenCurrency);
 
-  // URL---------------------------------------
-
-  var url = "https://api.exchangeratesapi.io/latest?base="+ chosenCurrencyCompare;
+  // URL
+  var url = "https://api.exchangeratesapi.io/latest?base="+ chosenCurrency;
 
 
   $.getJSON( url , function(data) {
 
     ratesArray = data.rates;
 
-    console.log(data);
-    console.log(data.rates.EUR);
+    // Testing
+    // console.log(data);
+    // console.log(data.rates.EUR);
 
     currencyArray = ["GBP", "EUR", "USD", "CAD", "HKD", "ISK", "PHP", "DKK"
                     , "HUF", "CZK", "AUD", "RON", "SEK", "IDR", "INR", "BRL"
@@ -48,12 +49,14 @@ $("#compareButton").click(function(){
 
     // Initial title and conversion message on text area
     document.getElementById("conversionTitle").innerHTML = ("Exchange Rate Comparison");
-    document.getElementById("currencyComparisonMessage").innerHTML = ("1 " + chosenCurrencyCompare + " converts to: \n");
+    document.getElementById("currencyComparisonMessage").innerHTML = ("1 " + chosenCurrency + " converts to: \n");
 
+    // Adds each currency to the text area
     for (var i = 0; i < currencyArray.length; i++) {
-      if (currencyArray[i] !== chosenCurrencyCompare) {
+      if (currencyArray[i] !== chosenCurrency) {
         var fullRate = ratesArray[currencyArray[i]];
 
+        // Converts to 2 decimal places
         rounded2DecRate = Math.round(fullRate * 100) / 100;
 
         document.getElementById("currencyResultsTextArea").value += (rounded2DecRate + " " + fullNameCurrency[currencyArray[i]] + " ("+ currencyArray[i] + ")\n");

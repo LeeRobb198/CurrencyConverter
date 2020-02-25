@@ -1,25 +1,24 @@
-// Creates a graph of exchange rates against a given currency ----------------------
+// Creates a graph of exchange rates against a given currency ------------------
 
 $("#graphButton").click(function(){
-
   console.log("Click registered");
 
-  // Get chosen currencies from dropdown
-  var ccLow = document.getElementById("currencyCompareGraphDropdown");
-  var chosenCurrency = ccLow.options[ccLow.selectedIndex].value;
+  // Get chosen currency from dropdown
+  var cc = document.getElementById("currencyCompareGraphDropdown");
+  var chosenCurrency = cc.options[cc.selectedIndex].value;
 
-  // Get the lowest exchange from text field
+  // Get the minimum exchange from text field
   var minimumExchangeRateValue = document.getElementById("minimumExchange").value;
 
-  // Get the highest exchange from text field
+  // Get the maximum exchange from text field
   var maximumExchangeRateValue = document.getElementById("maximumExchange").value;
 
-  // URL---------------------------------------
-
+  // URL
   var url = "https://api.exchangeratesapi.io/latest?base="+ chosenCurrency;
 
   $.getJSON( url , function(data) {
 
+    // Declaration of arrays to store currencies and their rates
     var selectedCurrencyArray = [];
     var exchangeRatesArray = [];
 
@@ -47,6 +46,7 @@ $("#graphButton").click(function(){
                     , "MXN": "Mexican Peso - MXN", "ILS": "Israeli New Shekel - ILS"
                     , "KRW": "South Korean Won - KRW", "MYR": "Malaysian Ringgit - MYR"};
 
+    // Adds each currency to the text area
     for (var i = 0; i < currencyArray.length; i++) {
       if ((ratesArray[currencyArray[i]] > minimumExchangeRateValue) && (ratesArray[currencyArray[i]] < maximumExchangeRateValue)) {
         if (currencyArray[i] !== chosenCurrency) {
@@ -54,22 +54,24 @@ $("#graphButton").click(function(){
 
           rounded2DecRate = Math.round(fullRate * 100) / 100;
 
+          // Adds to the arrays to be used to construct graph
           selectedCurrencyArray.push(fullNameCurrency[currencyArray[i]]);
           exchangeRatesArray.push(rounded2DecRate);
         }
       }
     }
 
+    // Bar graph format
     function BuildBarChart(labels, values, chartTitle) {
       var ctx = document.getElementById("barChart").getContext('2d');
       var myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: labels, // Our labels
+          labels: labels,
           datasets: [{
-            label: chartTitle, // Name the series
-            data: values, // Our values
-            backgroundColor: [ // Specify custom colors
+            label: chartTitle,
+            data: values,
+            backgroundColor: [
               'rgba(72, 72, 72, 1)',
               'rgba(80, 80, 80, 1)',
               'rgba(88, 88, 88, 1)',
@@ -104,12 +106,12 @@ $("#graphButton").click(function(){
               'rgba(152, 152, 152, 1)'
             ],
             borderColor: 'rgba(64, 64, 64, 1)',
-            borderWidth: 1 // Specify bar border width
+            borderWidth: 1
           }]
         },
         options: {
-          responsive: true, // Instruct chart js to respond nicely.
-          maintainAspectRatio: false, // Add to prevent default behavior of full-width/height
+          responsive: true,
+          maintainAspectRatio: false,
           title: {
             display: true,
             text: 'Exchange Rates: ' + chosenCurrency,
@@ -124,7 +126,7 @@ $("#graphButton").click(function(){
           },
           scales:{
             xAxes: [{
-                display: false //this will remove all the x-axis grid lines
+                display: false
             }]
           }
         }
@@ -132,19 +134,26 @@ $("#graphButton").click(function(){
       return myBarChart;
     }
 
+    // Creates graph
     var chart = BuildBarChart(selectedCurrencyArray, exchangeRatesArray, "Exchange Rates");
-  });
+  }); // End of getJSON()
 
+  // Enables and disables buttons
   document.getElementById("graphButton").disabled = true;
   document.getElementById("clearGraphButton").disabled = false;
+}); // End of button
 
-});
+// Clears graph ----------------------------------------------------------------
 
 $("#clearGraphButton").click(function(){
+  // Removes content of div
   var barChartContent = document.getElementById('mainContentCentreLeft');
   barChartContent.innerHTML = '';
+
+  // Adds a new canvas to the div
   $('#mainContentCentreLeft').append('<canvas id="barChart"></canvas>');
 
+  // Enables and disables buttons
   document.getElementById("graphButton").disabled = false;
   document.getElementById("clearGraphButton").disabled = true;
-});
+}); // End of button

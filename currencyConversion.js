@@ -6,18 +6,18 @@ $("#conversionButton").click(function(){
   // Clears text area
   $("#currencyResultsTextArea").val("");
 
-  // Get chosen currencies from dropdown
-  var ccOne = document.getElementById("currencyConversionDropdown");
-  var chosenCurrencyConversion = ccOne.options[ccOne.selectedIndex].value;
+  // Get chosen currency from dropdown
+  var cc = document.getElementById("currencyConversionDropdown");
+  var chosenCurrencyConversion = cc.options[cc.selectedIndex].value;
 
   // Get amount from text field
   var amount = document.getElementById("amount").value;
 
-  console.log(chosenCurrencyConversion);
-  console.log(amount);
+  // Testing
+  // console.log(chosenCurrencyConversion);
+  // console.log(amount);
 
-  // URL---------------------------------------
-
+  // URL
   var url = "https://api.exchangeratesapi.io/latest?base="+ chosenCurrencyConversion;
 
   $.getJSON( url , function(data) {
@@ -50,6 +50,7 @@ $("#conversionButton").click(function(){
     document.getElementById("conversionTitle").innerHTML = ("Currency Conversion");
     document.getElementById("currencyComparisonMessage").innerHTML = (amount + " " + chosenCurrencyConversion + " converts to: \n");
 
+    // Adds each currency to the text area
     for (var i = 0; i < currencyArray.length; i++) {
       if (currencyArray[i] !== chosenCurrencyConversion) {
         var fullRate = amount * (ratesArray[currencyArray[i]]);

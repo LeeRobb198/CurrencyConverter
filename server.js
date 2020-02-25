@@ -1,52 +1,43 @@
 const express = require('express')
 const app = express()
 var https = require('https');
-// var bodyParser = require('body-parser');
-
-var jsdom = require('jsdom');
-const { JSDOM } = jsdom;
-const { window } = new JSDOM();
-const { document } = (new JSDOM('')).window;
-global.document = document;
-
-var $ = require('jquery')(window);
-
-app.use(express.static(__dirname)); // Get the html, js, css and image files
 app.use(express.json());
+
+// Get the html, js, css and image files
+app.use(express.static(__dirname));
+
+ // Get the public folder
+// app.use(express.static(__dirname + '/public'));
+// Get the html page
+// app.use(express.static(__dirname));
+
+// Get the CSS, JS and images
+// app.use("/css", express.static("./public/css"));
+// app.use("/js", express.static("./public/js"));
+// app.use("/images", express.static("./public/images"));
 
 // Send the index page
 app.get('/', function (req, res) {
   res.sendFile(__dirname + "/index.html");
 })
 
-// app.use(bodyParser.json());
-
-// Allowing CORS
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, PATCH, OPTIONS");
-//   next();
-// });
-
 // Post Method -----------------------------------------------------------------
 
 app.post('/historyAPI', function(request, response)  {
   console.log("Post request received by client");
+
+  // Test - Returns the array from client
   console.log(request.body);
 
-  console.log("Check 1");
-
-  // Search criteria
+  // Search criteria for API sent by client
   var chosenCurrency = request.body.chosenCurrency;
   var startDate = request.body.startDate;
   var endDate = request.body.endDate;
 
+  // Testing
   console.log(chosenCurrency);
   console.log(startDate);
   console.log(endDate);
-
-  console.log("Check 2");
 
   var url = "https://api.exchangeratesapi.io/history?start_at=" + startDate+ "&end_at=" + endDate + "&base=" + chosenCurrency;
 
@@ -68,8 +59,7 @@ app.post('/historyAPI', function(request, response)  {
   }).on('error', function(e){
         console.log("Got an error: ", e);
   });
-
-});
+}); // End POST method
 
 
 // Listen to the server on port 80 ---------------------------------------------

@@ -1,3 +1,7 @@
+//
+// Code requesting API from client
+//
+
 $("#graphHistoricButton").click(function(){
 
   console.log("Click registered");
