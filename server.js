@@ -3,18 +3,15 @@ const app = express()
 var https = require('https');
 app.use(express.json());
 
-// Get the html, js, css and image files
+ // Get the public folder
+app.use(express.static(__dirname + '/public'));
+// Get the html page
 app.use(express.static(__dirname));
 
- // Get the public folder
-// app.use(express.static(__dirname + '/public'));
-// Get the html page
-// app.use(express.static(__dirname));
-
 // Get the CSS, JS and images
-// app.use("/css", express.static("./public/css"));
-// app.use("/js", express.static("./public/js"));
-// app.use("/images", express.static("./public/images"));
+app.use("/css", express.static("./public/css"));
+app.use("/js", express.static("./public/js"));
+app.use("/images", express.static("./public/images"));
 
 // Send the index page
 app.get('/', function (req, res) {
