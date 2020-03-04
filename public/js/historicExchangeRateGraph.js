@@ -18,7 +18,7 @@ $("#graphHistoricButton").click(async function(){
   var endDate = document.getElementById("endDate").value;
 
   // Array to be sent to server
-  var currencyData = {chosenCurrency, startDate, endDate};
+  var currencyData = {chosenCurrency, chosenComparisonCurrency, startDate, endDate};
 
   // What will be sent / method used to the server
   var options = {
@@ -32,56 +32,67 @@ $("#graphHistoricButton").click(async function(){
   // Sends request to server
   var response = await fetch('/historyAPI', options);
 
-  // Returns JSON data from server
+  // // Returns JSON data from server
+  // var data = await response.json();
+  //
+  // // Post Server Request -------------------------------------------------------
+  //
+  // // // Constructs arrays
+  // var selectedCurrencyHistoryArray = [];
+  // var datesArray = Object.keys(data.body.rates);
+  // var unixDateArray = [];
+  // var formattedDateArray = [];
+  //
+  // // For loop converting date into unix time
+  // for (var i = 0; i < datesArray.length; i++) {
+  //   var unixDate = Date.parse(datesArray[i]);
+  //   unixDateArray.push(unixDate)
+  // }
+  //
+  // // Sorting dates in order
+  // sortedDatesArray = unixDateArray.sort(function(x, y){
+  //   return x - y;
+  // });
+  //
+  // // Convert back to date format
+  // for (var i = 0; i < sortedDatesArray.length; i++) {
+  //   var specificDate = new Date(sortedDatesArray[i]);
+  //
+  //   var dd = specificDate.getDate();
+  //   var mm = specificDate.getMonth()+1;
+  //   var yyyy = specificDate.getFullYear();
+  //
+  //   if (dd < 10) {
+  //     dd = "0" + dd;
+  //   }
+  //
+  //   if (mm < 10) {
+  //     mm = "0" + mm;
+  //   }
+  //
+  //   // Formats date to yyyy-mm-dd
+  //   var formattedDate = yyyy.toString()+'-'+mm+'-'+dd;
+  //
+  //   // Adds formatted date to array to be used in graph
+  //   formattedDateArray.push(formattedDate);
+  // }
+
+  // Retrieves exchange rate of given date
+  // for (var i = 0; i < formattedDateArray.length; i++) {
+  //   var currencyHistory = (data.body.rates[formattedDateArray[i]][chosenComparisonCurrency]);
+  //   selectedCurrencyHistoryArray.push(currencyHistory);
+  // }
+
   var data = await response.json();
+
+  console.log(data);
 
   // Post Server Request -------------------------------------------------------
 
-  // Constructs arrays
-  var selectedCurrencyHistoryArray = [];
-  var datesArray = Object.keys(data.body.rates);
-  var unixDateArray = [];
-  var formattedDateArray = [];
-
-  // For loop converting date into unix time
-  for (var i = 0; i < datesArray.length; i++) {
-    var unixDate = Date.parse(datesArray[i]);
-    unixDateArray.push(unixDate)
-  }
-
-  // Sorting dates in order
-  sortedDatesArray = unixDateArray.sort(function(x, y){
-    return x - y;
-  });
-
-  // Convert back to date format
-  for (var i = 0; i < sortedDatesArray.length; i++) {
-    var specificDate = new Date(sortedDatesArray[i]);
-
-    var dd = specificDate.getDate();
-    var mm = specificDate.getMonth()+1;
-    var yyyy = specificDate.getFullYear();
-
-    if (dd < 10) {
-      dd = "0" + dd;
-    }
-
-    if (mm < 10) {
-      mm = "0" + mm;
-    }
-
-    // Formats date to yyyy-mm-dd
-    var formattedDate = yyyy.toString()+'-'+mm+'-'+dd;
-
-    // Adds formatted date to array to be used in graph
-    formattedDateArray.push(formattedDate);
-  }
-
-  // Retrieves exchange rate of given date
-  for (var i = 0; i < formattedDateArray.length; i++) {
-    var currencyHistory = (data.body.rates[formattedDateArray[i]][chosenComparisonCurrency]);
-    selectedCurrencyHistoryArray.push(currencyHistory);
-  }
+  // // Constructs arrays
+  var formattedDateArray = data.body.formattedDateArray;
+  var selectedCurrencyHistoryArray = data.body.selectedCurrencyHistoryArray;
+  // var datesArray = Object.keys(data.body.rates);
 
   // Line graph format
   function BuildLineChart(labels, values, chartTitle) {
