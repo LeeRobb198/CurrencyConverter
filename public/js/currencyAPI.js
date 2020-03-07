@@ -1,6 +1,6 @@
 // Exchange rates against given currency ---------------------------------------
 
-$("#compareButton").click(function(){
+$("#compareButton").click(async function(){
   console.log("Click registered");
 
   // Clears text area
@@ -13,55 +13,66 @@ $("#compareButton").click(function(){
   // Testing
   // console.log(chosenCurrency);
 
-  // URL
-  var url = "https://api.exchangeratesapi.io/latest?base="+ chosenCurrency;
+  // Array to be sent to server
+  var currencyData = {chosenCurrency};
 
+  // Content to be sent to server
+  var options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(currencyData)
+  }
 
-  $.getJSON( url , function(data) {
+  // Sends request to server
+  var responseCurrency = await fetch('/currencyAPI', options);
 
-    ratesArray = data.rates;
+  var data = await responseCurrency.json();
 
-    // Testing
-    // console.log(data);
-    // console.log(data.rates.EUR);
+  // Post Server Request -------------------------------------------------------
 
-    currencyArray = ["GBP", "EUR", "USD", "CAD", "HKD", "ISK", "PHP", "DKK"
-                    , "HUF", "CZK", "AUD", "RON", "SEK", "IDR", "INR", "BRL"
-                    , "RUB", "HRK", "JPY", "THB", "CHF", "SGD", "PLN", "BGN"
-                    , "TRY", "CNY", "NOK", "ZAR", "MXN", "ILS", "KRW", "MYR"]
+  // Testing
+  // console.log(data);
+  // console.log(data.body.apiResponse.rates);
 
-    fullNameCurrency = {"GBP": "Pound Sterling", "EUR": "Euro"
-                    , "USD": "United States Dollar", "CAD": "Canadian Dollar"
-                    , "HKD": "Hong Kong Dollar", "ISK": "Icelandic Krona"
-                    , "PHP": "Philippine Peso", "DKK": "Danish Krone"
-                    , "HUF": "Hungarian Forin", "CZK": "Czech Koruna"
-                    , "AUD": "Australian Dollar", "RON": "Romanian Leu"
-                    , "SEK": "Swedish Krona", "IDR": "Indonesian Rupiah"
-                    , "INR": "Indian Rupee", "BRL": "Brazilian Real"
-                    , "RUB": "Russian Ruble", "HRK": "Croatian Kuna"
-                    , "JPY": "Japanese Yen", "THB": "Thai Baht"
-                    , "CHF": "Swiss Franc", "SGD": "Singapore Dollar"
-                    , "PLN": "Poland Złoty", "BGN": "Bulgarian Lev"
-                    , "TRY": "Turkish Lira", "CNY": "Chinese Yuan"
-                    , "NOK": "Norwegian Krone", "ZAR": "New Zealand Dollar"
-                    , "MXN": "Mexican Peso", "ILS": "Israeli New Shekel"
-                    , "KRW": "South Korean Won", "MYR": "Malaysian Ringgit"};
+  ratesArray = data.body.apiResponse.rates;
 
-    // Initial title and conversion message on text area
-    document.getElementById("conversionTitle").innerHTML = ("Exchange Rate Comparison");
-    document.getElementById("currencyComparisonMessage").innerHTML = ("1 " + chosenCurrency + " converts to: \n");
+  currencyArray = ["GBP", "EUR", "USD", "CAD", "HKD", "ISK", "PHP", "DKK"
+                  , "HUF", "CZK", "AUD", "RON", "SEK", "IDR", "INR", "BRL"
+                  , "RUB", "HRK", "JPY", "THB", "CHF", "SGD", "PLN", "BGN"
+                  , "TRY", "CNY", "NOK", "ZAR", "MXN", "ILS", "KRW", "MYR"]
 
-    // Adds each currency to the text area
-    for (var i = 0; i < currencyArray.length; i++) {
-      if (currencyArray[i] !== chosenCurrency) {
-        var fullRate = ratesArray[currencyArray[i]];
+  fullNameCurrency = {"GBP": "Pound Sterling", "EUR": "Euro"
+                  , "USD": "United States Dollar", "CAD": "Canadian Dollar"
+                  , "HKD": "Hong Kong Dollar", "ISK": "Icelandic Krona"
+                  , "PHP": "Philippine Peso", "DKK": "Danish Krone"
+                  , "HUF": "Hungarian Forin", "CZK": "Czech Koruna"
+                  , "AUD": "Australian Dollar", "RON": "Romanian Leu"
+                  , "SEK": "Swedish Krona", "IDR": "Indonesian Rupiah"
+                  , "INR": "Indian Rupee", "BRL": "Brazilian Real"
+                  , "RUB": "Russian Ruble", "HRK": "Croatian Kuna"
+                  , "JPY": "Japanese Yen", "THB": "Thai Baht"
+                  , "CHF": "Swiss Franc", "SGD": "Singapore Dollar"
+                  , "PLN": "Poland Złoty", "BGN": "Bulgarian Lev"
+                  , "TRY": "Turkish Lira", "CNY": "Chinese Yuan"
+                  , "NOK": "Norwegian Krone", "ZAR": "New Zealand Dollar"
+                  , "MXN": "Mexican Peso", "ILS": "Israeli New Shekel"
+                  , "KRW": "South Korean Won", "MYR": "Malaysian Ringgit"};
 
-        // Converts to 2 decimal places
-        rounded2DecRate = Math.round(fullRate * 100) / 100;
+  // Initial title and conversion message on text area
+  document.getElementById("conversionTitle").innerHTML = ("Exchange Rate Comparison");
+  document.getElementById("currencyComparisonMessage").innerHTML = ("1 " + chosenCurrency + " converts to: \n");
 
-        document.getElementById("currencyResultsTextArea").value += (rounded2DecRate + " " + fullNameCurrency[currencyArray[i]] + " ("+ currencyArray[i] + ")\n");
-      }
+  // Adds each currency to the text area
+  for (var i = 0; i < currencyArray.length; i++) {
+    if (currencyArray[i] !== chosenCurrency) {
+      var fullRate = ratesArray[currencyArray[i]];
+
+      // Converts to 2 decimal places
+      rounded2DecRate = Math.round(fullRate * 100) / 100;
+
+      document.getElementById("currencyResultsTextArea").value += (rounded2DecRate + " " + fullNameCurrency[currencyArray[i]] + " ("+ currencyArray[i] + ")\n");
     }
-
-  });
-});
+  }
+}); // End of button

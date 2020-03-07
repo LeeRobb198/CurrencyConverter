@@ -1,6 +1,6 @@
 // Exchange rates against given currency ---------------------------------------
 
-$("#conversionButton").click(function(){
+$("#conversionButton").click(async function(){
   console.log("Click registered");
 
   // Clears text area
@@ -8,7 +8,7 @@ $("#conversionButton").click(function(){
 
   // Get chosen currency from dropdown
   var cc = document.getElementById("currencyConversionDropdown");
-  var chosenCurrencyConversion = cc.options[cc.selectedIndex].value;
+  var chosenCurrency = cc.options[cc.selectedIndex].value;
 
   // Get amount from text field
   var amount = document.getElementById("amount").value;
@@ -17,49 +17,65 @@ $("#conversionButton").click(function(){
   // console.log(chosenCurrencyConversion);
   // console.log(amount);
 
-  // URL
-  var url = "https://api.exchangeratesapi.io/latest?base="+ chosenCurrencyConversion;
+  // Array to be sent to server
+  var currencyConversionData = {chosenCurrency};
 
-  $.getJSON( url , function(data) {
+  // Content to be sent to server
+  var options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(currencyConversionData)
+  }
 
-    ratesArray = data.rates;
+  // Sends request to server
+  var responseCurrencyConversion = await fetch('/currencyAPI', options);
 
-    currencyArray = ["GBP", "EUR", "USD", "CAD", "HKD", "ISK", "PHP", "DKK"
-                    , "HUF", "CZK", "AUD", "RON", "SEK", "IDR", "INR", "BRL"
-                    , "RUB", "HRK", "JPY", "THB", "CHF", "SGD", "PLN", "BGN"
-                    , "TRY", "CNY", "NOK", "ZAR", "MXN", "ILS", "KRW", "MYR"]
+  var data = await responseCurrencyConversion.json();
 
-    fullNameCurrency = {"GBP": "Pound Sterling", "EUR": "Euro"
-                    , "USD": "United States Dollar", "CAD": "Canadian Dollar"
-                    , "HKD": "Hong Kong Dollar", "ISK": "Icelandic Krona"
-                    , "PHP": "Philippine Peso", "DKK": "Danish Krone"
-                    , "HUF": "Hungarian Forin", "CZK": "Czech Koruna"
-                    , "AUD": "Australian Dollar", "RON": "Romanian Leu"
-                    , "SEK": "Swedish Krona", "IDR": "Indonesian Rupiah"
-                    , "INR": "Indian Rupee", "BRL": "Brazilian Real"
-                    , "RUB": "Russian Ruble", "HRK": "Croatian Kuna"
-                    , "JPY": "Japanese Yen", "THB": "Thai Baht"
-                    , "CHF": "Swiss Franc", "SGD": "Singapore Dollar"
-                    , "PLN": "Poland Złoty", "BGN": "Bulgarian Lev"
-                    , "TRY": "Turkish Lira", "CNY": "Chinese Yuan"
-                    , "NOK": "Norwegian Krone", "ZAR": "New Zealand Dollar"
-                    , "MXN": "Mexican Peso", "ILS": "Israeli New Shekel"
-                    , "KRW": "South Korean Won", "MYR": "Malaysian Ringgit"};
+  // Post Server Request -------------------------------------------------------
 
-    // Initial title and conversion message on text area
-    document.getElementById("conversionTitle").innerHTML = ("Currency Conversion");
-    document.getElementById("currencyComparisonMessage").innerHTML = (amount + " " + chosenCurrencyConversion + " converts to: \n");
+  // Testing
+  // console.log(data);
+  // console.log(data.body.apiResponse.rates);
 
-    // Adds each currency to the text area
-    for (var i = 0; i < currencyArray.length; i++) {
-      if (currencyArray[i] !== chosenCurrencyConversion) {
-        var fullRate = amount * (ratesArray[currencyArray[i]]);
+  ratesArray = data.body.apiResponse.rates;
 
-        rounded2DecRate = Math.round(fullRate * 100) / 100;
+  currencyArray = ["GBP", "EUR", "USD", "CAD", "HKD", "ISK", "PHP", "DKK"
+                  , "HUF", "CZK", "AUD", "RON", "SEK", "IDR", "INR", "BRL"
+                  , "RUB", "HRK", "JPY", "THB", "CHF", "SGD", "PLN", "BGN"
+                  , "TRY", "CNY", "NOK", "ZAR", "MXN", "ILS", "KRW", "MYR"]
 
-        document.getElementById("currencyResultsTextArea").value += (rounded2DecRate + " " + fullNameCurrency[currencyArray[i]] + " ("+ currencyArray[i] + ")\n");
-      }
+  fullNameCurrency = {"GBP": "Pound Sterling", "EUR": "Euro"
+                  , "USD": "United States Dollar", "CAD": "Canadian Dollar"
+                  , "HKD": "Hong Kong Dollar", "ISK": "Icelandic Krona"
+                  , "PHP": "Philippine Peso", "DKK": "Danish Krone"
+                  , "HUF": "Hungarian Forin", "CZK": "Czech Koruna"
+                  , "AUD": "Australian Dollar", "RON": "Romanian Leu"
+                  , "SEK": "Swedish Krona", "IDR": "Indonesian Rupiah"
+                  , "INR": "Indian Rupee", "BRL": "Brazilian Real"
+                  , "RUB": "Russian Ruble", "HRK": "Croatian Kuna"
+                  , "JPY": "Japanese Yen", "THB": "Thai Baht"
+                  , "CHF": "Swiss Franc", "SGD": "Singapore Dollar"
+                  , "PLN": "Poland Złoty", "BGN": "Bulgarian Lev"
+                  , "TRY": "Turkish Lira", "CNY": "Chinese Yuan"
+                  , "NOK": "Norwegian Krone", "ZAR": "New Zealand Dollar"
+                  , "MXN": "Mexican Peso", "ILS": "Israeli New Shekel"
+                  , "KRW": "South Korean Won", "MYR": "Malaysian Ringgit"};
+
+  // Initial title and conversion message on text area
+  document.getElementById("conversionTitle").innerHTML = ("Currency Conversion");
+  document.getElementById("currencyComparisonMessage").innerHTML = (amount + " " + chosenCurrency + " converts to: \n");
+
+  // Adds each currency to the text area
+  for (var i = 0; i < currencyArray.length; i++) {
+    if (currencyArray[i] !== chosenCurrency) {
+      var fullRate = amount * (ratesArray[currencyArray[i]]);
+
+      rounded2DecRate = Math.round(fullRate * 100) / 100;
+
+      document.getElementById("currencyResultsTextArea").value += (rounded2DecRate + " " + fullNameCurrency[currencyArray[i]] + " ("+ currencyArray[i] + ")\n");
     }
-
-  });
-});
+  }
+}); // End of button
