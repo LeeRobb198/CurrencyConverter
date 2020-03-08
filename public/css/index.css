@@ -24,8 +24,28 @@ body {
   text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
 }
 
+/* For mobile device textHeader */
+@media screen and (max-width: 1024px) {
+    .textHeader {
+      position: absolute;
+      top: 25px;
+      left: 40px;
+      font-size: 50px;
+      color: #404040;
+      text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+    }
+}
+
 .imageHeader {
   opacity: 0.7;
+}
+
+/* For mobile device imageHeader */
+@media screen and (max-width: 1024px) {
+    .imageHeader {
+      opacity: 0.7;
+      height: 3%;
+    }
 }
 
 /* headerLine --------------------------------------------------------------- */
@@ -34,6 +54,15 @@ body {
   width: 706px;
   border-top: 25px solid #D8D8D8;
   border-right: 25px solid transparent;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+    .headerLine {
+      width: 90%;
+      border-top: 25px solid #D8D8D8;
+      border-right: 25px solid transparent;
+    }
 }
 
 /* mainContent  ------------------------------------------------------------- */
@@ -65,6 +94,17 @@ body {
   background: #f2f2f2;
 }
 
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+    .mainContentTopLeft {
+      margin: 0;
+      margin-bottom: 20px;
+      height: 100%;
+      width: 100%;
+      background: #f2f2f2;
+    }
+}
+
 .buttonStyle {
   margin-top: 20px;
 }
@@ -83,6 +123,16 @@ body {
   background: #f2f2f2;
 }
 
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+    .mainContentTopRight {
+      margin: 0;
+      height: 430px;
+      width: 100%;
+      background: #f2f2f2;
+    }
+}
+
 /* Dividers ----------------------------------------------------------------- */
 
 .mainContentVerticalTopDivider {
@@ -96,24 +146,47 @@ body {
   border-radius: 10px;
 }
 
+/* For mobile device remove divider */
+@media screen and (max-width: 1024px) {
+    .mainContentVerticalTopDivider {
+        display: none !important;
+    }
+}
+
 .mainContentVerticalCentreDivider {
   display: inline-block;
   position: absolute;
-  height: 50%;
+  margin-top: 1%;
+  height: 48%;
   right: 40%;
   width: 0.5%;
   background: #D8D8D8;
   border-radius: 10px;
 }
 
+/* For mobile device remove divider */
+@media screen and (max-width: 1024px) {
+    .mainContentVerticalCentreDivider {
+        display: none !important;
+    }
+}
+
 .mainContentVerticalBottomDivider {
   display: inline-block;
   position: absolute;
-  height: 50%;
+  margin-top: 1%;
+  height: 58%;
   left: 40%;
   width: 0.5%;
   background: #D8D8D8;
   border-radius: 10px;
+}
+
+/* For mobile device remove divider */
+@media screen and (max-width: 1024px) {
+    .mainContentVerticalBottomDivider {
+      display: none !important;
+    }
 }
 
 .mainContentHorizontalLeftDivider {
@@ -127,6 +200,20 @@ body {
   border-radius: 10px;
 }
 
+/* For mobile device full width divider */
+@media screen and (max-width: 1024px) {
+    .mainContentHorizontalLeftDivider {
+      display: inline-block;
+      position: absolute;
+      margin-top: 0.5%;
+      height: 1%;
+      left: 5%;
+      width: 90%;
+      background: #D8D8D8;
+      border-radius: 10px;
+    }
+}
+
 .mainContentHorizontalRightDivider {
   display: inline-block;
   position: absolute;
@@ -138,9 +225,24 @@ body {
   border-radius: 10px;
 }
 
+/* For mobile device remove divider */
+@media screen and (max-width: 1024px) {
+    .mainContentHorizontalRightDivider {
+        display: none !important;
+    }
+}
+
 .horizontalDividerContainer {
   width: 100%;
   height: 25px;
+}
+
+/* For mobile device decrease height of divider */
+@media screen and (max-width: 1024px) {
+    .horizontalDividerContainer {
+      width: 100%;
+      height: 10px;
+    }
 }
 
 /* mainContentCentreLeft ---------------------------------------------------- */
@@ -153,6 +255,17 @@ body {
   border: 2px solid #404040;
 }
 
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+    #mainContentCentreLeft {
+      margin: 0;
+      height: 370px;
+      width: 100%;
+      background: #E8E8E8;
+      border: 2px solid #404040;
+    }
+}
+
 /* mainContentCentreRight --------------------------------------------------- */
 
 .mainContentCentreRight {
@@ -160,6 +273,17 @@ body {
   height: 370px;
   width: 35%;
   background: #E8E8E8;
+}
+
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+    .mainContentCentreRight {
+      margin: 0;
+      margin-bottom: 20px;
+      height: 100%;
+      width: 100%;
+      background: #E8E8E8;
+    }
 }
 
 .contentCentreRight {
@@ -172,19 +296,40 @@ body {
 
 #mainContentBottomRight {
   float: right;
-  height: 440px;
+  height: 435px;
   width: 55%;
   background: #E8E8E8;
   border: 2px solid #404040;
+}
+
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+    #mainContentBottomRight {
+      height: 440px;
+      width: 100%;
+      background: #E8E8E8;
+      border: 2px solid #404040;
+    }
 }
 
 /* mainContentBottomRight --------------------------------------------------- */
 
 .mainContentBottomLeft {
   float: left;
-  height: 440px;
+  height: 100%;
   width: 35%;
   background: #E8E8E8;
+}
+
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+    .mainContentBottomLeft {
+      margin: 0;
+      margin-bottom: 20px;
+      float: left;
+      width: 100%;
+      background: #E8E8E8;
+    }
 }
 
 .contentBottomLeft {
@@ -209,6 +354,11 @@ body {
 
 .contentTitle {
   font-size: 30px;
+}
+
+.contentConversionTitle {
+  font-size: 30px;
+  margin-top: 60px;
 }
 
 /* Dropdown Box ------------------------------------------------------------- */
@@ -319,6 +469,7 @@ body {
 .doubleButtonAlignment {
   display: flex;
   justify-content: center;
+  padding-bottom: 20px;
 }
 
 /* Text Box ----------------------------------------------------------------- */
@@ -334,6 +485,22 @@ body {
   box-sizing: border-box;
   font-size: 20px;
   outline: none;
+}
+
+/* For mobile device change textbox width */
+@media screen and (max-width: 1024px) {
+    .textboxStyle {
+      width: 45%;
+      padding: 5px 5px;
+      margin-bottom: 7%;
+      margin-left: 4%;
+      display: inline-block;
+      border: 2px solid dimgray;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 20px;
+      outline: none;
+    }
 }
 
 .textboxAlignment {
@@ -352,6 +519,22 @@ body {
   line-height: 50px;
   border: 2px solid #404040;
   outline: none;
+  font-family: Arial;
+}
+
+/* For mobile device decrease size of width */
+@media screen and (max-width: 1024px) {
+    #currencyResultsTextArea {
+      margin-left: 10%;
+      margin-right: 10%;
+      width: 70%;
+      height: 60%;
+      font-size: 30px;
+      line-height: 50px;
+      border: 2px solid #404040;
+      outline: none;
+      font-family: Arial;
+    }
 }
 
 /* Place Holder ------------------------------------------------------------- */

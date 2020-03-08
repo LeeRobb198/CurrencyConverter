@@ -88,7 +88,7 @@
 
           <!-- Currency value to convert -------------------------------------->
 
-          <h2 class="contentTitle"> Currency Conversion </h2>
+          <h2 class="contentConversionTitle"> Currency Conversion </h2>
           <p> Find out how much your currency is worth: </p>
 
           <form>
@@ -166,12 +166,6 @@
 
     <section class="mainContentCentreContainer">
 
-      <!-- mainContentCentreLeft ---------------------------------------------->
-
-      <div id="mainContentCentreLeft">
-        <canvas id="barChart"></canvas>
-      </div>
-
       <!-- mainContentCentreRight --------------------------------------------->
 
       <div class="mainContentCentreRight">
@@ -220,8 +214,8 @@
           </form>
           <p> Search between a minimum and maximum exchange rate: </p>
           <div class="textboxAlignment">
-            <input type="text" placeholder="Minimum" class="textboxStyle" id="minimumExchange">
-            <input type="text" placeholder="Maximum" class="textboxStyle" id="maximumExchange">
+            <input type="text" placeholder="Min" class="textboxStyle" id="minimumExchange">
+            <input type="text" placeholder="Max" class="textboxStyle" id="maximumExchange">
           </div>
 
           <div class="doubleButtonAlignment">
@@ -229,6 +223,12 @@
             <button disabled class="buttonStyle" id="clearGraphButton" type="submit"> Clear Graph</button>
           </div>
         </div>
+      </div>
+
+      <!-- mainContentCentreLeft ---------------------------------------------->
+
+      <div id="mainContentCentreLeft">
+        <canvas id="barChart"></canvas>
       </div>
 
       <!-- mainContentDivider ------------------------------------------------->
@@ -248,13 +248,7 @@
 
     <section class="mainContentBottomContainer">
 
-      <!-- mainContentRightLeft ----------------------------------------------->
-
-      <div id="mainContentBottomRight">
-        <canvas id="lineChart"></canvas>
-      </div>
-
-      <!-- mainContentCentreRight --------------------------------------------->
+      <!-- mainContentCentreLeft ---------------------------------------------->
 
       <div class="mainContentBottomLeft">
         <div class="contentBottomLeft">
@@ -352,6 +346,12 @@
             <button disabled class="buttonStyle" id="clearHistoricGraphButton" type="submit"> Clear Graph</button>
           </div>
         </div>
+      </div>
+
+      <!-- mainContentBottomRight --------------------------------------------->
+
+      <div id="mainContentBottomRight">
+        <canvas id="lineChart"></canvas>
       </div>
 
       <!-- mainContentDivider ------------------------------------------------->
