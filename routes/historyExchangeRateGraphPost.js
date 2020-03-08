@@ -7,9 +7,12 @@ var https = require('https');
 module.exports = function(app){
 
   app.post('/historyAPI', function(request, response)  {
+    console.log("\n------------------------------------------");
     console.log("HistoryAPI post request received by client");
+    console.log("------------------------------------------");
 
     // Test - Returns the array from client
+    console.log("\nRequest body from client: ");
     console.log(request.body);
 
     // Search criteria for API sent by client
@@ -19,6 +22,7 @@ module.exports = function(app){
     var endDate = request.body.endDate;
 
     // Testing
+    console.log("\nParameters: ");
     console.log(chosenCurrency);
     console.log(chosenComparisonCurrency);
     console.log(startDate);
@@ -38,9 +42,9 @@ module.exports = function(app){
 
         res.on('end', function(){
             var apiResponse = JSON.parse(body);
-            console.log("HistoryAPI got a response: \n", apiResponse);
 
-            // console.log("Server res: " + Object.keys(apiResponse.rates));
+            //Testing - Large response of dates
+            // console.log("\nHistoryAPI got a response: \n", apiResponse);
 
             // Constructs arrays
             var selectedCurrencyHistoryArray = [];
@@ -82,19 +86,19 @@ module.exports = function(app){
               formattedDateArray.push(formattedDate);
             }
 
-            console.log("Formatted date: " + formattedDateArray);
-
             // Retrieves exchange rate of given date
             for (var i = 0; i < formattedDateArray.length; i++) {
               var currencyHistory = (apiResponse.rates[formattedDateArray[i]][chosenComparisonCurrency]);
               selectedCurrencyHistoryArray.push(currencyHistory);
             }
 
-            console.log("Currency Chosen: " + selectedCurrencyHistoryArray);
+            // Testing - Arrays
+            // console.log("Formatted date: " + formattedDateArray);
+            // console.log("Currency Chosen: " + selectedCurrencyHistoryArray);
 
             responseHistoryData = {formattedDateArray, selectedCurrencyHistoryArray};
 
-            // Server response ---------------------------------------------------
+            // Server response -------------------------------------------------
 
             response.status(200).json({
               message: "Response received",
@@ -102,7 +106,7 @@ module.exports = function(app){
             });
         });
     }).on('error', function(e){
-          console.log("HistoryAPI got an error: ", e);
+          console.log("\nHistoryAPI got an error: ", e);
     });
   }); // End HistoricExchangeRateGraph POST method
 }

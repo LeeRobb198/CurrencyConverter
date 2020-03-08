@@ -7,15 +7,19 @@ var https = require('https');
 module.exports = function(app){
 
   app.post('/currencyAPI', function(request, response)  {
+    console.log("\n-------------------------------------------");
     console.log("CurrencyAPI post request received by client");
+    console.log("-------------------------------------------");
 
     // Test - Returns the array from client
+    console.log("\nRequest body from client: ");
     console.log(request.body);
 
     // Search criteria for API sent by client
     var chosenCurrency = request.body.chosenCurrency;
 
     // Testing
+    console.log("\nParameters: ");
     console.log(chosenCurrency);
 
     // URL
@@ -33,7 +37,7 @@ module.exports = function(app){
 
       res.on('end', function(){
         var apiResponse = JSON.parse(body);
-        console.log("CurrencyAPI got a response: \n", apiResponse);
+        console.log("\nCurrencyAPI got a response: \n", apiResponse);
 
         responseCurrencyData = {apiResponse};
 
@@ -44,7 +48,7 @@ module.exports = function(app){
       });
 
     }).on('error', function(e){
-          console.log("CurrencyAPI got an error: ", e);
+          console.log("\nCurrencyAPI got an error: ", e);
     });
   }); // End CurrencyAPI POST method
 }

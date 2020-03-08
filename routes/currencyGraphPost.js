@@ -7,9 +7,12 @@ var https = require('https');
 module.exports = function(app){
 
   app.post('/currencyGraph', function(request, response)  {
+    console.log("\n-----------------------------------------------------");
     console.log("CurrencyConversionAPI post request received by client");
+    console.log("-----------------------------------------------------");
 
     // Test - Returns the array from client
+    console.log("\nRequest body from client: ");
     console.log(request.body);
 
     // Search criteria for API sent by client
@@ -18,6 +21,7 @@ module.exports = function(app){
     var maximumExchangeRateValue = request.body.maximumExchangeRateValue;
 
     // Testing
+    console.log("\nParameters: ");
     console.log(chosenCurrency);
     console.log(minimumExchangeRateValue);
     console.log(maximumExchangeRateValue);
@@ -37,7 +41,7 @@ module.exports = function(app){
 
       res.on('end', function(){
         var apiResponse = JSON.parse(body);
-        console.log("CurrencyGraph got a response: \n", apiResponse);
+        console.log("\nCurrencyGraph got a response: \n", apiResponse);
 
         // Declaration of arrays to store currencies and their rates
         var selectedCurrencyArray = [];
@@ -81,8 +85,10 @@ module.exports = function(app){
             }
           }
         }
-        console.log(selectedCurrencyArray);
-        console.log(exchangeRatesArray);
+
+        // Testing - Arrays
+        // console.log(selectedCurrencyArray);
+        // console.log(exchangeRatesArray);
 
         responseCurrencyData = {selectedCurrencyArray, exchangeRatesArray};
 
@@ -93,7 +99,7 @@ module.exports = function(app){
       });
 
     }).on('error', function(e){
-          console.log("CurrencyAPI got an error: ", e);
+          console.log("\nCurrencyAPI got an error: ", e);
     });
   }); // End CurrencyGraph POST method
 }
