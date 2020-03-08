@@ -25,10 +25,10 @@ body {
 }
 
 /* For mobile device textHeader */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 600px) {
     .textHeader {
       position: absolute;
-      top: 25px;
+      top: -15px;
       left: 40px;
       font-size: 50px;
       color: #404040;
@@ -41,10 +41,10 @@ body {
 }
 
 /* For mobile device imageHeader */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 600px) {
     .imageHeader {
       opacity: 0.7;
-      height: 3%;
+      height: 100px;
     }
 }
 
