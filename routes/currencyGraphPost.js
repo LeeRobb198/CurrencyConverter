@@ -29,7 +29,7 @@ module.exports = function(app){
     // URL
     var url = "https://api.exchangeratesapi.io/latest?base="+ chosenCurrency;
 
-    // Response to server --------------------------------------------------------
+    // Response to server ------------------------------------------------------
 
     https.get(url, function(res){
 
