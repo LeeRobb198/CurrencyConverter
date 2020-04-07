@@ -1,0 +1,51 @@
+/* -------------------------------------------------------------------------- */
+/* Main Content TOP CSS ----------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+/* mainContentTopLeft ------------------------------------------------------- */
+
+.mainContentTopLeft {
+  float: left;
+  height: 430px;
+  width: 45%;
+  background: #f2f2f2;
+}
+
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+    .mainContentTopLeft {
+      margin: 0;
+      margin-bottom: 20px;
+      height: 100%;
+      width: 100%;
+      background: #f2f2f2;
+    }
+}
+
+.buttonStyle {
+  margin-top: 20px;
+}
+
+#contentTop {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* mainContentTopRight ------------------------------------------------------ */
+
+.mainContentTopRight {
+  float: right;
+  height: 430px;
+  width: 45%;
+  background: #f2f2f2;
+}
+
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+    .mainContentTopRight {
+      margin: 0;
+      height: 430px;
+      width: 100%;
+      background: #f2f2f2;
+    }
+}

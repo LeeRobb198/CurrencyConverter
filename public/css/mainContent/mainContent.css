@@ -1,0 +1,21 @@
+/* -------------------------------------------------------------------------- */
+/* Main Content CSS ---------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+.mainContentTopContainer {
+  padding: 20px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mainContentCentreContainer {
+  padding: 20px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mainContentBottomContainer {
+  padding: 20px;
+  height: 100%;
+  overflow: hidden;
+}

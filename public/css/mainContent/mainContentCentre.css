@@ -1,0 +1,50 @@
+/* -------------------------------------------------------------------------- */
+/* Main Content CENTRE CSS -------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+/* mainContentCentreLeft ---------------------------------------------------- */
+
+#mainContentCentreLeft {
+  float: left;
+  height: 370px;
+  width: 55%;
+  background: #E8E8E8;
+  border: 2px solid #404040;
+}
+
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+    #mainContentCentreLeft {
+      margin: 0;
+      height: 370px;
+      width: 100%;
+      background: #E8E8E8;
+      border: 2px solid #404040;
+    }
+}
+
+/* mainContentCentreRight --------------------------------------------------- */
+
+.mainContentCentreRight {
+  float: right;
+  height: 370px;
+  width: 35%;
+  background: #E8E8E8;
+}
+
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+    .mainContentCentreRight {
+      margin: 0;
+      margin-bottom: 20px;
+      height: 100%;
+      width: 100%;
+      background: #E8E8E8;
+    }
+}
+
+.contentCentreRight {
+  margin-left: 10%;
+  margin-right: 10%;
+  color: #404040;
+}
