@@ -10,8 +10,20 @@
     <!-- Title -->
     <title> iCurrency </title>
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="index.css">
+    <!-- css/ Stylesheets -->
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/sideNav.css">
+    <!-- css/index Stylesheets -->
+    <link rel="stylesheet" href="/css/index/dividers.css">
+    <!-- css/index/mainContent Stylesheets -->
+    <link rel="stylesheet" href="/css/index/mainContent/mainContent.css">
+    <link rel="stylesheet" href="/css/index/mainContent/mainContentTop.css">
+    <link rel="stylesheet" href="/css/index/mainContent/mainContentCentre.css">
+    <link rel="stylesheet" href="/css/index/mainContent/mainContentBottom.css">
+    <!-- css/index/features Stylesheets -->
+    <link rel="stylesheet" href="/css/index/features/buttons.css">
+    <link rel="stylesheet" href="/css/index/features/dropdown.css">
+    <link rel="stylesheet" href="/css/index/features/extraFeatures.css">
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -24,25 +36,41 @@
 <!-- Body --------------------------------------------------------------------->
 
   <body>
+
     <div class="header">
-      <img src="currency-image.jpeg" height="250px" width="100%" class=imageHeader>
-      <h1 class=textHeader> iCurrency </h1>
+      <div class="textHeader"> iCurrency </div>
+
+      <div class="navIconContainer">
+        <button id="openSideNav">
+          <img src="images/hamburger-menu-icon.svg">
+        </button>
+      </div>
     </div>
+
+    <!-- Navigation Menu -->
+
+    <div id="sideNav" class="sideNavContainer">
+      <a class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </div>
+
+    <!-- Header Line -->
 
     <div class="headerLine"></div>
 
-    <!-- mainContentTopContainer ------------------------------------------------->
+    <!-- mainContentTopContainer ---------------------------------------------->
 
     <section class="mainContentTopContainer">
 
-      <!-- mainContentTopLeft ----------------------->
+      <!-- mainContentTopLeft ------------------------------------------------->
 
       <div class="mainContentTopLeft">
         <div id="contentTop">
-          <h2 class="topLeftText"> Currency Rates </h2>
+          <h2 class="contentTitle"> Currency Rates </h2>
           <p> Compare exchange rates against a currency: </p>
           <form>
-            <div class="dropdown">
+            <div class="currencyDropdown">
               <select id="currencyCompareDropdown">
                 <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
@@ -86,13 +114,13 @@
             <button class="buttonStyle" id="compareButton" type="submit">Compare</button>
           </div>
 
-          <!-- Currency value to convert ----------->
+          <!-- Currency value to convert -------------------------------------->
 
-          <h2 class="topLeftText"> Currency Conversion </h2>
+          <h2 class="contentConversionTitle"> Currency Conversion </h2>
           <p> Find out how much your currency is worth: </p>
 
           <form>
-            <div class="dropdown">
+            <div class="currencyDropdown">
               <select id="currencyConversionDropdown">
                 <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
@@ -139,15 +167,15 @@
         </div>
       </div>
 
-      <!-- mainContentDivider ---------------------->
+      <!-- mainContentDivider ------------------------------------------------->
 
       <div class="mainContentVerticalTopDivider"></div>
 
-      <!-- mainContentTopRight ---------------------->
+      <!-- mainContentTopRight ------------------------------------------------>
 
       <div class="mainContentTopRight">
         <div id="contentTop">
-          <h2 class="topRightText" id="conversionTitle"> Compare or Convert Currency </h2>
+          <h2 class="contentTitle" id="conversionTitle"> Compare or Convert Currency </h2>
           <p  id="currencyComparisonMessage"> Please select a currency. </p>
         </div>
         <textarea readonly id="currencyResultsTextArea" rows="4" cols="50"></textarea>
@@ -155,31 +183,25 @@
 
     </section>
 
-    <!-- mainContentDivider ---------------------->
+    <!-- mainContentDivider --------------------------------------------------->
 
     <section class="horizontalDividerContainer">
       <div class="mainContentHorizontalLeftDivider"></div>
       <div class="mainContentHorizontalRightDivider"></div>
     </section>
 
-    <!-- mainContentCentreContainer ------------------------------------------------->
+    <!-- mainContentCentreContainer ------------------------------------------->
 
     <section class="mainContentCentreContainer">
 
-      <!-- mainContentCentreLeft ---------------------->
-
-      <div id="mainContentCentreLeft">
-        <canvas id="barChart"></canvas>
-      </div>
-
-      <!-- mainContentCentreRight ---------------------->
+      <!-- mainContentCentreRight --------------------------------------------->
 
       <div class="mainContentCentreRight">
         <div class="contentCentreRight">
-          <h1 class="currencyGraphTitle"> Currency Graphs </h1>
+          <h1 class="contentTitle"> Currency Graphs </h1>
           <p> Visualise exchange rates against a currency: </p>
           <form>
-            <div class="dropdown">
+            <div class="currencyDropdown">
               <select id="currencyCompareGraphDropdown">
                 <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
@@ -220,8 +242,8 @@
           </form>
           <p> Search between a minimum and maximum exchange rate: </p>
           <div class="textboxAlignment">
-            <input type="text" placeholder="Minimum" class="textboxStyle" id="minimumExchange">
-            <input type="text" placeholder="Maximum" class="textboxStyle" id="maximumExchange">
+            <input type="text" placeholder="Min" class="textboxStyle" id="minimumExchange">
+            <input type="text" placeholder="Max" class="textboxStyle" id="maximumExchange">
           </div>
 
           <div class="doubleButtonAlignment">
@@ -231,37 +253,42 @@
         </div>
       </div>
 
-      <!-- mainContentDivider ---------------------->
+      <!-- mainContentCentreLeft ---------------------------------------------->
+
+      <div id="mainContentCentreLeft">
+        <canvas id="barChart"></canvas>
+      </div>
+
+      <!-- mainContentDivider ------------------------------------------------->
 
       <div class="mainContentVerticalCentreDivider"></div>
 
     </section>
 
-    <!-- mainContentDivider ---------------------->
+    <!-- mainContentDivider --------------------------------------------------->
 
     <section class="horizontalDividerContainer">
       <div class="mainContentHorizontalLeftDivider"></div>
       <div class="mainContentHorizontalRightDivider"></div>
     </section>
 
-    <!-- mainContentBottomContainer ------------------------------------------------->
+    <!-- mainContentBottomContainer ------------------------------------------->
 
     <section class="mainContentBottomContainer">
 
-      <!-- mainContentRightLeft ---------------------->
-
-      <div id="mainContentBottomRight">
-        <canvas id="lineChart"></canvas>
-      </div>
-
-      <!-- mainContentCentreRight ---------------------->
+      <!-- mainContentCentreLeft ---------------------------------------------->
 
       <div class="mainContentBottomLeft">
         <div class="contentBottomLeft">
+<<<<<<< HEAD
           <h1 class="historicExchangeRatesGraphTitle"> Historic Exchange Rates </h1>
           <p> Visualise historic exchange rates for a currency against another currency: </p>
+=======
+          <h1 class="contentTitle"> Historic Exchange Rates </h1>
+          <p> Visualise historic exchange rates for a currency: </p>
+>>>>>>> Server-API
           <form>
-            <div class="dropdown">
+            <div class="currencyDropdown">
               <select id="historicExchangeRateGraphDropdown">
                 <option value="" selected disabled hidden> Select A Currency To Explore Its History </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
@@ -340,6 +367,47 @@
               </select>
             </div>
           </form>
+          <p> Compared against:</p>
+          <form>
+            <div class="currencyDropdown">
+              <select id="historicExchangeRateGraphDropdownComparison">
+                <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
+                <option value="GBP">GBP - Pound Sterling</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="USD">USD - United States Dollar</option>
+                <option value="CAD">CAD - Canadian Dollar</option>
+                <option value="HKD">HKD - Hong Kong Dollar</option>
+                <option value="ISK">ISK - Icelandic Krona</option>
+                <option value="PHP">PHP - Philippine Peso</option>
+                <option value="DKK">DKK - Danish Krone</option>
+                <option value="HUF">HUF - Hungarian Forint</option>
+                <option value="CZK">CZK - Czech Koruna</option>
+                <option value="AUD">AUD - Australian Dollar</option>
+                <option value="RON">RON - Romanian Leu</option>
+                <option value="SEK">SEK - Swedish Krona</option>
+                <option value="IDR">IDR - Indonesian Rupiah</option>
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="BRL">BRL - Brazilian Real</option>
+                <option value="RUB">RUB - Russian Ruble</option>
+                <option value="HRK">HRK - Croatian Kuna</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+                <option value="THB">THB - Thai Baht</option>
+                <option value="CHF">CHF - Swiss Franc</option>
+                <option value="SGD">SGD - Singapore Dollar</option>
+                <option value="PLN">PLN - Poland złoty</option>
+                <option value="BGN">BGN - Bulgarian Lev</option>
+                <option value="TRY">TRY - Turkish lira</option>
+                <option value="CNY">CNY - Chinese Yuan</option>
+                <option value="NOK">NOK - Norwegian Krone</option>
+                <option value="NZD">NZD - New Zealand Dollar</option>
+                <option value="ZAR">ZAR - South African Rand</option>
+                <option value="MXN">MXN - Mexican Peso</option>
+                <option value="ILS">ILS - Israeli New Shekel</option>
+                <option value="KRW">KRW - South Korean Won</option>
+                <option value="MYR">MYR - Malaysian Ringgit</option>
+              </select>
+            </div>
+          </form>
           <p> Search between two dates: </p>
           <div class="textboxAlignment">
             <input type="text" placeholder="Date" class="textboxStyle" id="startDate">
@@ -353,7 +421,13 @@
         </div>
       </div>
 
-      <!-- mainContentDivider ---------------------->
+      <!-- mainContentBottomRight --------------------------------------------->
+
+      <div id="mainContentBottomRight">
+        <canvas id="lineChart"></canvas>
+      </div>
+
+      <!-- mainContentDivider ------------------------------------------------->
 
       <div class="mainContentVerticalBottomDivider"></div>
 
@@ -362,21 +436,25 @@
     <!-- Footer -->
     <div class="footer"></div>
 
-    <!-- Scripts ---------------------------------->
+    <!-- Scripts -------------------------------------------------------------->
 
     <!-- currencyAPI script -->
-    <script src="currencyAPI.js"></script>
+    <script src="/js/currencyAPI.js"></script>
 
     <!-- currencyConversion script -->
-    <script src="currencyConversion.js"></script>
+    <script src="/js/currencyConversion.js"></script>
 
     <!-- graph script -->
-    <script src="currencyGraph.js"></script>
+    <script src="/js/currencyGraph.js"></script>
 
     <!-- dropdown script -->
-    <script src="dropdown.js"></script>
+    <script src="/js/dropdown.js"></script>
 
-    <script src="historicExchangeRateGraph.js"></script>
+    <!-- historicExchangeRateGraph script -->
+    <script src="/js/historicExchangeRateGraph.js"></script>
+
+    <!-- sideNav script -->
+    <script src="/js/sideNav.js"></script>
 
     <!-- Canvas script -->
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

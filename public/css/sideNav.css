@@ -1,0 +1,38 @@
+/* -------------------------------------------------------------------------- */
+/* Side Nav CSS ------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+.sideNavContainer {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #404040;
+  opacity: 0.98;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sideNavContainer a {
+  padding: 12px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 40px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sideNavContainer a:hover {
+  color: #f1f1f1;
+}
+
+.sideNavContainer .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}

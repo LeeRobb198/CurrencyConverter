@@ -1,0 +1,113 @@
+/* -------------------------------------------------------------------------- */
+/* Index CSS ---------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+body {
+  margin: 0%;
+  font-family: Arial;
+  color: #404040;
+}
+
+/* Header ------------------------------------------------------------------- */
+
+.header {
+  background-image: url("/images/money-symbols-background.jpg");
+  background-size: cover;
+  position: relative;
+  height: 300px;
+}
+
+.textHeader {
+  background-color: #404040;
+  color: white;
+  font-size: 10vw;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 10px;
+  width: 50%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* For mobile device imageHeader */
+@media screen and (max-width: 600px) {
+    .header {
+      height: 125px;
+    }
+}
+
+/* For mobile device textHeader */
+@media screen and (max-width: 600px) {
+    .textHeader {
+      background-color: #404040;
+      color: white;
+      font-size: 10vw;
+      font-weight: bold;
+      margin: 0 auto;
+      padding: 10px;
+      width: 50%;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+}
+
+/* navContainer ------------------------------------------------------------- */
+
+.navIconContainer {
+  position: absolute;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  background: #404040;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+  .navIconContainer {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+#openSideNav {
+  background-color: #404040;
+  border: 0px;
+  outline: none;
+  position: absolute;
+  padding: 0;
+  top: 20%;
+  left: 10%;
+  width: 70%;
+  height: 70%;
+}
+
+/* headerLine --------------------------------------------------------------- */
+
+.headerLine {
+  width: 95%;
+  border-top: 20px solid #404040;
+  border-right: 20px solid transparent;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+    .headerLine {
+      width: 90%;
+      border-top: 20px solid #404040;
+      border-right: 20px solid transparent;
+    }
+}
+
+/* Footer ------------------------------------------------------------------- */
+
+.footer {
+  bottom: 0px;
+  border-bottom: 20px solid #404040;
+  border-left: 20px solid transparent;
+}

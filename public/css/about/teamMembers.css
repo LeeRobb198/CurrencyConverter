@@ -1,0 +1,54 @@
+/* -------------------------------------------------------------------------- */
+/* Team Members ------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+.meetTheTeamTitle {
+  font-size: 25px;
+  margin-top: 0%;
+  margin-bottom: 15px;
+}
+
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+  .meetTheTeamTitle {
+    margin-top: 10%;
+  }
+}
+
+/* User Profiles ------------------------------------------------------------ */
+
+.userFrontEndProfile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+  .userFrontEndProfile {
+    margin-top: 5%;
+  }
+}
+
+.userBackEndProfile {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 15%;
+}
+
+/* For mobile device full width */
+@media screen and (max-width: 1024px) {
+  .userBackEndProfile {
+    margin-top: 10%;
+    margin-bottom: 5%
+  }
+}
+
+.userDataContainer {
+  padding: 8px 16px 2px;
+}
+
+.userTitle {
+  margin-top: 15px;
+}
+
+.userRole {
+  font-style: italic;
+}
