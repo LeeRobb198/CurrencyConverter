@@ -1,4 +1,6 @@
-// Creates a graph of historic exchange rates against a given currency ---------
+// -----------------------------------------------------------------------------
+// Creates a graph of historic exchange rates against a given currency JS ------
+// -----------------------------------------------------------------------------
 
 $("#graphHistoricButton").click(async function(){
   console.log("Click registered");

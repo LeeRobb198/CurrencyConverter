@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+
+<!-- Head --------------------------------------------------------------------->
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Title -->
+    <title> iCurrency </title>
+
+    <!-- css/ Stylesheets -->
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/about.css">
+    <link rel="stylesheet" href="/css/sideNav.css">
+    <!-- css/about Stylesheets -->
+    <link rel="stylesheet" href="/css/about/teamMembers.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  </head>
+
+  <!-- Body --------------------------------------------------------------------->
+
+  <body>
+
+    <div class="header">
+      <div class="textHeader"> About </div>
+
+      <div class="navIconContainer">
+        <button id="openSideNav">
+          <img src="images/hamburger-menu-icon.svg">
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+
+    <div id="sideNav" class="sideNavContainer">
+      <a class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </div>
+
+    <!-- Header Libe -->
+
+    <div class="headerLine"></div>
+
+    <!--  -->
+
+    <section class="outerAboutContent">
+      <section class="rightContent">
+        <h1 class="purposeTitle"> Purpose of iCurrency </h1>
+        <section class="purposeContent">
+          <div class="contentText">
+            <!-- <h1 class="purposeTitle"> Purpose of iCurrency </h1> -->
+            <br> The application has four functions within it. The user can compare 32 different currencies live by either standard numerals, a bar chart or a line chart. The application has the ability for the user to:
+            <ol>
+              <li> Compare the exchange rate of one currency against all currencies presented in a numerical form. </li>
+              <br>
+              <li> Convert a currency given a value of one currency converted to the amount received of each other currencies. </li>
+              <br>
+              <li> Compare the exchange rate of one currency against all currencies presented in a bar chart form. </li>
+              <br>
+              <li> Compare historical exchange rates between two dates comparing one currency against another. </li>
+            </ol>
+            Comparing the exchange rate of one currency against another, presenting the data in a numerical form requires the user to select a currency from a dropdown of options. Finding the value received given a value of a chosen currency requires the user to enter a numerical value and the currency they wish to convert. To compare the exchange rate of a currency against all currencies presenting the data in a bar chart form requires the user to select a currency from a dropdown of options in addition to setting a minimum and maximum limit. This will scale the graph down to limit the number of currencies present. For example, selecting GBP and setting a limit between 0 – 20 will not display currencies where the value of 1 GBP would give a currency value back of anything > 20. The final function of comparing historical data requires the user to select a currency and a currency they wish to compare against from two separate dropdowns. Also, the user will need to choose two dates to compare between.
+          </div>
+        </section>
+        <h1 class="thirdPartyTitle"> Third Party Content </h1>
+        <div class="thirdPartyContent">
+          <div class="contentText">
+            <!-- <h1 class="thirdPartyTitle"> Third Party Content </h1> -->
+            <br> This application uses the following third party content.
+            <ul class="unorderedListStyle">
+              <li> The Exchange rates API published by the European Central Bank as it's source of data: </li>
+              <a href="https://exchangeratesapi.io/"> https://exchangeratesapi.io/ </a>
+            </ul>
+            <ul class="unorderedListStyle">
+              <li> The graphs were constructed using CanvasJs: </li>
+              <a href="https://canvasjs.com/"> https://canvasjs.com/ </a>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="leftContent">
+        <h1 class="meetTheTeamTitle"> Meet the Team </h1>
+        <div class="userFrontEndProfile">
+          <img src="images/avatar-frontend.jpeg" style="width:100%">
+          <div class="userDataContainer">
+            <h2 class="userTitle"> Lee Robbie </h2>
+            <p class="userRole"> Front-end Web Developer </p>
+            <p> Honours (BSc) computing science student at Robert Gordon University. </p>
+            <p> 1601432@rgu.ac.uk </p>
+          </div>
+        </div>
+        <div class="userBackEndProfile">
+          <img src="images/avatar-backend.jpeg" style="width:100%">
+          <div class="userDataContainer">
+            <h2 class="userTitle"> Lee Robbie </h2>
+            <p class="userRole"> Back-end Web Developer </p>
+            <p> Honours (BSc) computing science student at Robert Gordon University. </p>
+            <p> 1601432@rgu.ac.uk </p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer"></div>
+
+    <!-- Scripts -------------------------------------------------------------->
+
+    <!-- sideNav script -->
+    <script src="/js/sideNav.js"></script>
+
+  </body>
+</html>

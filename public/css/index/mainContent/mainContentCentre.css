@@ -10,6 +10,7 @@
   width: 55%;
   background: #E8E8E8;
   border: 2px solid #404040;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* For mobile device full width */
@@ -30,6 +31,7 @@
   height: 370px;
   width: 35%;
   background: #E8E8E8;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* For mobile device full width */

@@ -1,4 +1,6 @@
-// Exchange rates against given currency ---------------------------------------
+// -----------------------------------------------------------------------------
+// Exchange rates against given currency JS ------------------------------------
+// -----------------------------------------------------------------------------
 
 $("#compareButton").click(async function(){
   console.log("Click registered");

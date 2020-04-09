@@ -9,6 +9,7 @@
   height: 430px;
   width: 45%;
   background: #f2f2f2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* For mobile device full width */
@@ -38,6 +39,7 @@
   height: 430px;
   width: 45%;
   background: #f2f2f2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* For mobile device full width */

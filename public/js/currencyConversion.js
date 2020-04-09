@@ -1,4 +1,6 @@
-// Exchange rates against given currency ---------------------------------------
+// -----------------------------------------------------------------------------
+// Exchange rates against given currency JS ------------------------------------
+// -----------------------------------------------------------------------------
 
 $("#conversionButton").click(async function(){
   console.log("Click registered");
@@ -17,65 +19,73 @@ $("#conversionButton").click(async function(){
   // console.log(chosenCurrencyConversion);
   // console.log(amount);
 
-  // Array to be sent to server
-  var currencyConversionData = {chosenCurrency};
+  if (isNaN(amount)) {
+    // -------------------------------------------------------------------------
+    // WORK TO BE DONE ---------------------------------------------------------
+    // -------------------------------------------------------------------------
+    console.log("Your not a number");
+  } else {
 
-  // Content to be sent to server
-  var options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(currencyConversionData)
-  }
+    // Array to be sent to server
+    var currencyConversionData = {chosenCurrency};
 
-  // Sends request to server
-  var responseCurrencyConversion = await fetch('/currencyAPI', options);
+    // Content to be sent to server
+    var options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(currencyConversionData)
+    }
 
-  var data = await responseCurrencyConversion.json();
+    // Sends request to server
+    var responseCurrencyConversion = await fetch('/currencyAPI', options);
 
-  // Post Server Request -------------------------------------------------------
+    var data = await responseCurrencyConversion.json();
 
-  // Testing
-  // console.log(data);
-  // console.log(data.body.apiResponse.rates);
+    // Post Server Request -------------------------------------------------------
 
-  ratesArray = data.body.apiResponse.rates;
+    // Testing
+    // console.log(data);
+    // console.log(data.body.apiResponse.rates);
 
-  currencyArray = ["GBP", "EUR", "USD", "CAD", "HKD", "ISK", "PHP", "DKK"
-                  , "HUF", "CZK", "AUD", "RON", "SEK", "IDR", "INR", "BRL"
-                  , "RUB", "HRK", "JPY", "THB", "CHF", "SGD", "PLN", "BGN"
-                  , "TRY", "CNY", "NOK", "ZAR", "MXN", "ILS", "KRW", "MYR"]
+    ratesArray = data.body.apiResponse.rates;
 
-  fullNameCurrency = {"GBP": "Pound Sterling", "EUR": "Euro"
-                  , "USD": "United States Dollar", "CAD": "Canadian Dollar"
-                  , "HKD": "Hong Kong Dollar", "ISK": "Icelandic Krona"
-                  , "PHP": "Philippine Peso", "DKK": "Danish Krone"
-                  , "HUF": "Hungarian Forin", "CZK": "Czech Koruna"
-                  , "AUD": "Australian Dollar", "RON": "Romanian Leu"
-                  , "SEK": "Swedish Krona", "IDR": "Indonesian Rupiah"
-                  , "INR": "Indian Rupee", "BRL": "Brazilian Real"
-                  , "RUB": "Russian Ruble", "HRK": "Croatian Kuna"
-                  , "JPY": "Japanese Yen", "THB": "Thai Baht"
-                  , "CHF": "Swiss Franc", "SGD": "Singapore Dollar"
-                  , "PLN": "Poland Złoty", "BGN": "Bulgarian Lev"
-                  , "TRY": "Turkish Lira", "CNY": "Chinese Yuan"
-                  , "NOK": "Norwegian Krone", "ZAR": "New Zealand Dollar"
-                  , "MXN": "Mexican Peso", "ILS": "Israeli New Shekel"
-                  , "KRW": "South Korean Won", "MYR": "Malaysian Ringgit"};
+    currencyArray = ["GBP", "EUR", "USD", "CAD", "HKD", "ISK", "PHP", "DKK"
+                    , "HUF", "CZK", "AUD", "RON", "SEK", "IDR", "INR", "BRL"
+                    , "RUB", "HRK", "JPY", "THB", "CHF", "SGD", "PLN", "BGN"
+                    , "TRY", "CNY", "NOK", "ZAR", "MXN", "ILS", "KRW", "MYR"]
 
-  // Initial title and conversion message on text area
-  document.getElementById("conversionTitle").innerHTML = ("Currency Conversion");
-  document.getElementById("currencyComparisonMessage").innerHTML = (amount + " " + chosenCurrency + " converts to: \n");
+    fullNameCurrency = {"GBP": "Pound Sterling", "EUR": "Euro"
+                    , "USD": "United States Dollar", "CAD": "Canadian Dollar"
+                    , "HKD": "Hong Kong Dollar", "ISK": "Icelandic Krona"
+                    , "PHP": "Philippine Peso", "DKK": "Danish Krone"
+                    , "HUF": "Hungarian Forin", "CZK": "Czech Koruna"
+                    , "AUD": "Australian Dollar", "RON": "Romanian Leu"
+                    , "SEK": "Swedish Krona", "IDR": "Indonesian Rupiah"
+                    , "INR": "Indian Rupee", "BRL": "Brazilian Real"
+                    , "RUB": "Russian Ruble", "HRK": "Croatian Kuna"
+                    , "JPY": "Japanese Yen", "THB": "Thai Baht"
+                    , "CHF": "Swiss Franc", "SGD": "Singapore Dollar"
+                    , "PLN": "Poland Złoty", "BGN": "Bulgarian Lev"
+                    , "TRY": "Turkish Lira", "CNY": "Chinese Yuan"
+                    , "NOK": "Norwegian Krone", "ZAR": "New Zealand Dollar"
+                    , "MXN": "Mexican Peso", "ILS": "Israeli New Shekel"
+                    , "KRW": "South Korean Won", "MYR": "Malaysian Ringgit"};
 
-  // Adds each currency to the text area
-  for (var i = 0; i < currencyArray.length; i++) {
-    if (currencyArray[i] !== chosenCurrency) {
-      var fullRate = amount * (ratesArray[currencyArray[i]]);
+    // Initial title and conversion message on text area
+    document.getElementById("conversionTitle").innerHTML = ("Currency Conversion");
+    document.getElementById("currencyComparisonMessage").innerHTML = (amount + " " + chosenCurrency + " converts to: \n");
 
-      rounded2DecRate = Math.round(fullRate * 100) / 100;
+    // Adds each currency to the text area
+    for (var i = 0; i < currencyArray.length; i++) {
+      if (currencyArray[i] !== chosenCurrency) {
+        var fullRate = amount * (ratesArray[currencyArray[i]]);
 
-      document.getElementById("currencyResultsTextArea").value += (rounded2DecRate + " " + fullNameCurrency[currencyArray[i]] + " ("+ currencyArray[i] + ")\n");
+        rounded2DecRate = Math.round(fullRate * 100) / 100;
+
+        document.getElementById("currencyResultsTextArea").value += (rounded2DecRate + " " + fullNameCurrency[currencyArray[i]] + " ("+ currencyArray[i] + ")\n");
+      }
     }
   }
 }); // End of button

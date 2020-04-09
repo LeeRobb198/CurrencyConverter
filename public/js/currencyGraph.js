@@ -1,4 +1,6 @@
-// Creates a graph of exchange rates against a given currency ------------------
+// -----------------------------------------------------------------------------
+// Creates a graph of exchange rates against a given currency JS ---------------
+// -----------------------------------------------------------------------------
 
 $("#graphButton").click(async function(){
   console.log("Click registered");

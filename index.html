@@ -12,16 +12,18 @@
 
     <!-- css/ Stylesheets -->
     <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/dividers.css">
-    <!-- css/mainContent Stylesheets -->
-    <link rel="stylesheet" href="/css/mainContent/mainContent.css">
-    <link rel="stylesheet" href="/css/mainContent/mainContentTop.css">
-    <link rel="stylesheet" href="/css/mainContent/mainContentCentre.css">
-    <link rel="stylesheet" href="/css/mainContent/mainContentBottom.css">
-    <!-- css/features Stylesheets -->
-    <link rel="stylesheet" href="/css/features/buttons.css">
-    <link rel="stylesheet" href="/css/features/dropdown.css">
-    <link rel="stylesheet" href="/css/features/extraFeatures.css">
+    <link rel="stylesheet" href="/css/sideNav.css">
+    <!-- css/index Stylesheets -->
+    <link rel="stylesheet" href="/css/index/dividers.css">
+    <!-- css/index/mainContent Stylesheets -->
+    <link rel="stylesheet" href="/css/index/mainContent/mainContent.css">
+    <link rel="stylesheet" href="/css/index/mainContent/mainContentTop.css">
+    <link rel="stylesheet" href="/css/index/mainContent/mainContentCentre.css">
+    <link rel="stylesheet" href="/css/index/mainContent/mainContentBottom.css">
+    <!-- css/index/features Stylesheets -->
+    <link rel="stylesheet" href="/css/index/features/buttons.css">
+    <link rel="stylesheet" href="/css/index/features/dropdown.css">
+    <link rel="stylesheet" href="/css/index/features/extraFeatures.css">
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -37,7 +39,23 @@
 
     <div class="header">
       <div class="textHeader"> iCurrency </div>
+
+      <div class="navIconContainer">
+        <button id="openSideNav">
+          <img src="images/hamburger-menu-icon.svg">
+        </button>
+      </div>
     </div>
+
+    <!-- Navigation Menu -->
+
+    <div id="sideNav" class="sideNavContainer">
+      <a class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </div>
+
+    <!-- Header Line -->
 
     <div class="headerLine"></div>
 
@@ -389,6 +407,9 @@
 
     <!-- historicExchangeRateGraph script -->
     <script src="/js/historicExchangeRateGraph.js"></script>
+
+    <!-- sideNav script -->
+    <script src="/js/sideNav.js"></script>
 
     <!-- Canvas script -->
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
