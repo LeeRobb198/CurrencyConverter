@@ -4,12 +4,10 @@
 
 .currencyDropdown {
   position: relative;
-  font-family: Arial;
   width: 100%;
-  height: 45px;
   overflow-x: hidden;
-  overflow-y: scroll;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 /* Hides original SELECT element */
@@ -43,7 +41,7 @@
 /* Style the currency options */
 .currency-options div,.currency-selected {
   color: #ffffff;
-  padding: 8px 16px;
+  padding: 12px 16px;
   border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;

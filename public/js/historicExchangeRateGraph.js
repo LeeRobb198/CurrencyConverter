@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Creates a graph of historic exchange rates against a given currency JS ------
+// Creates A Graph Of Historic Exchange Rates Against A Given Currency JS ------
 // -----------------------------------------------------------------------------
 
 $("#graphHistoricButton").click(async function(){
@@ -18,6 +18,8 @@ $("#graphHistoricButton").click(async function(){
 
   // Get the end date
   var endDate = document.getElementById("endDate").value;
+
+  // Input sanitation ----------------------------------------------------------
 
   if ((chosenCurrency == "noValue") || (chosenComparisonCurrency == "noValue") || (startDate.length == 0) || (endDate.length == 0)) {
     let currencyHistoryPopup = document.querySelector(".currencyHistoryPopup");
@@ -44,7 +46,7 @@ $("#graphHistoricButton").click(async function(){
 
     var data = await responseHistory.json();
 
-    // Post Server Request -------------------------------------------------------
+    // Post Server Request -----------------------------------------------------
 
     // Constructs arrays
     var formattedDateArray = data.body.formattedDateArray;
@@ -105,7 +107,7 @@ $("#graphHistoricButton").click(async function(){
     // Enables and disables buttons
     document.getElementById("graphHistoricButton").disabled = true;
     document.getElementById("clearHistoricGraphButton").disabled = false;
-  }
+  } // End of Else statement
 }); // End button
 
 $("#clearHistoricGraphButton").click(function(){

@@ -24,6 +24,12 @@
     <link rel="stylesheet" href="/css/index/features/buttons.css">
     <link rel="stylesheet" href="/css/index/features/dropdown.css">
     <link rel="stylesheet" href="/css/index/features/extraFeatures.css">
+    <!-- css/index/popups Stylesheets -->
+    <link rel="stylesheet" href="/css/index/popups/popupStyling.css">
+    <link rel="stylesheet" href="/css/index/popups/currencyRatePopup.css">
+    <link rel="stylesheet" href="/css/index/popups/notNumberPopup.css">
+    <link rel="stylesheet" href="/css/index/popups/exchangeRatesPopup.css">
+    <link rel="stylesheet" href="/css/index/popups/currencyHistoryPopup.css">
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -72,7 +78,7 @@
           <form>
             <div class="currencyDropdown">
               <select id="currencyCompareDropdown">
-                <option value="noValue" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
+                <option value="noValue" selected disabled hidden> Select Currency </option>
                 <option value="GBP">GBP - Pound Sterling</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="USD">USD - United States Dollar</option>
@@ -122,7 +128,7 @@
           <form>
             <div class="currencyDropdown">
               <select id="currencyConversionDropdown">
-                <option value="noValue" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
+                <option value="noValue" selected disabled hidden> Select Currency </option>
                 <option value="GBP">GBP - Pound Sterling</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="USD">USD - United States Dollar</option>
@@ -203,7 +209,7 @@
           <form>
             <div class="currencyDropdown">
               <select id="currencyCompareGraphDropdown">
-                <option value="noValue" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
+                <option value="noValue" selected disabled hidden> Select Currency </option>
                 <option value="GBP">GBP - Pound Sterling</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="USD">USD - United States Dollar</option>
@@ -285,7 +291,7 @@
           <form>
             <div class="currencyDropdown">
               <select id="historicExchangeRateGraphDropdown">
-                <option value="noValue" selected disabled hidden> Select A Currency To Explore Its History </option> <!-- remove if can't add validation -->
+                <option value="noValue" selected disabled hidden> Select A Currency To Explore Its History </option>
                 <option value="GBP">GBP - Pound Sterling</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="USD">USD - United States Dollar</option>
@@ -326,7 +332,7 @@
           <form>
             <div class="currencyDropdown">
               <select id="historicExchangeRateGraphDropdownComparison">
-                <option value="noValue" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
+                <option value="noValue" selected disabled hidden> Select Currency </option>
                 <option value="GBP">GBP - Pound Sterling</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="USD">USD - United States Dollar</option>
@@ -456,22 +462,16 @@
 
     <!-- currencyAPI script -->
     <script src="/js/currencyAPI.js"></script>
-
     <!-- currencyConversion script -->
     <script src="/js/currencyConversion.js"></script>
-
     <!-- graph script -->
     <script src="/js/currencyGraph.js"></script>
-
     <!-- dropdown script -->
     <script src="/js/dropdown.js"></script>
-
     <!-- historicExchangeRateGraph script -->
     <script src="/js/historicExchangeRateGraph.js"></script>
-
     <!-- sideNav script -->
     <script src="/js/popup.js"></script>
-
     <!-- sideNav script -->
     <script src="/js/sideNav.js"></script>
 

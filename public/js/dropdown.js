@@ -2,85 +2,97 @@
 // Dropdown JS -----------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-var x, i, j, selElmnt, a, b, c;
+// Variables
+var allDropdowns, selectElement, newDivSelected, newDivOptionList, newDivOptionItem;
 
-/* All dropdowns with the class "custom-select": */
-x = document.getElementsByClassName("currencyDropdown");
+// Index
+var i, j,
 
-for (i = 0; i < x.length; i++) {
-  selElmnt = x[i].getElementsByTagName("select")[0];
+// All dropdowns in the app with class currencyDropdown
+allDropdowns = document.getElementsByClassName("currencyDropdown");
 
-  /* For each element, create a new DIV that will act as the selected item: */
-  a = document.createElement("DIV");
-  a.setAttribute("class", "currency-selected");
-  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-  x[i].appendChild(a);
+for (i = 0; i < allDropdowns.length; i++) { // Start outer for statement
+  selectElement = allDropdowns[i].getElementsByTagName("select")[0];
 
-  /* For each element, create a new DIV that will contain the option list: */
-  b = document.createElement("DIV");
-  b.setAttribute("class", "currency-options options-hide");
+  // For each element create new div. Act as the selected item
+  newDivSelected = document.createElement("DIV");
+  newDivSelected.setAttribute("class", "currency-selected");
+  newDivSelected.innerHTML = selectElement.options[selectElement.selectedIndex].innerHTML;
+  allDropdowns[i].appendChild(newDivSelected);
 
-  for (j = 1; j < selElmnt.length; j++) {
-    /* For each option in the original select element,
-    create a new DIV that will act as an option item: */
-    c = document.createElement("DIV");
-    c.innerHTML = selElmnt.options[j].innerHTML;
+  // For each element create new div. Will contain the option list
+  newDivOptionList = document.createElement("DIV");
+  newDivOptionList.setAttribute("class", "currency-options options-hide");
 
-    c.addEventListener("click", function(e) {
-        /* When an item is clicked, update the original select box,
-        and the selected item: */
-        var y, i, k, s, h;
-        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-        h = this.parentNode.previousSibling;
+  for (j = 1; j < selectElement.length; j++) { // Start centre for statement
 
-        for (i = 0; i < s.length; i++) {
-          if (s.options[i].innerHTML == this.innerHTML) {
-            s.selectedIndex = i;
-            h.innerHTML = this.innerHTML;
-            y = this.parentNode.getElementsByClassName("same-as-selected");
-            for (k = 0; k < y.length; k++) {
-              y[k].removeAttribute("class");
-            }
-            this.setAttribute("class", "same-as-selected");
-            break;
+    // For each option in the original select element create new div. Will act as an option item
+    newDivOptionItem = document.createElement("DIV");
+    newDivOptionItem.innerHTML = selectElement.options[j].innerHTML;
+
+    // When item clicked update the original select box and selected item
+    newDivOptionItem.addEventListener("click", function(e) {
+
+      // Variables
+      var sameSelected, select, previousSibling;
+      // Index
+      var i, k,
+
+      select = this.parentNode.parentNode.getElementsByTagName("select")[0];
+      previousSibling = this.parentNode.previousSibling;
+
+      for (i = 0; i < select.length; i++) { // Start inner for statement
+        if (select.options[i].innerHTML == this.innerHTML) {
+          select.selectedIndex = i;
+          previousSibling.innerHTML = this.innerHTML;
+          sameSelected = this.parentNode.getElementsByClassName("same-as-selected");
+          for (k = 0; k < sameSelected.length; k++) {
+            sameSelected[k].removeAttribute("class");
           }
+          this.setAttribute("class", "same-as-selected");
+          break;
         }
-        h.click();
-    });
-    b.appendChild(c);
-  }
+      } // End inner for statement
+      previousSibling.click();
+    }); // End on click
+    newDivOptionList.appendChild(newDivOptionItem);
+  } // End centre for statement
 
-  x[i].appendChild(b);
-  a.addEventListener("click", function(e) {
-    /* When the select box is clicked, close any other select boxes,
-    and open/close the current select box: */
+  allDropdowns[i].appendChild(newDivOptionList);
+  newDivSelected.addEventListener("click", function(e) {
+    // When select box is clicked close any other select boxes and open/close the current select box
     e.stopPropagation();
     closeAllSelect(this);
     this.nextSibling.classList.toggle("options-hide");
     this.classList.toggle("arrow-active");
   });
-}
+} // End outer for statement
 
-function closeAllSelect(elmnt) {
-  /* A function that will close all select boxes in the document,
-  except the current select box: */
-  var x, y, i, arrNo = [];
-  x = document.getElementsByClassName("currency-options");
-  y = document.getElementsByClassName("currency-selected");
-  for (i = 0; i < y.length; i++) {
-    if (elmnt == y[i]) {
-      arrNo.push(i)
+// Function to close all select boxes in document except current select box
+function closeAllSelect(element) {
+
+  // Variables
+  var currencyOptions, currencySelected
+  var selectBoxesToClose = [];
+
+  // Index
+  var i;
+
+  currencyOptions = document.getElementsByClassName("currency-options");
+  currencySelected = document.getElementsByClassName("currency-selected");
+  for (i = 0; i < currencySelected.length; i++) {
+    if (element == currencySelected[i]) {
+      selectBoxesToClose.push(i)
     } else {
-      y[i].classList.remove("arrow-active");
+      currencySelected[i].classList.remove("arrow-active");
     }
   }
-  for (i = 0; i < x.length; i++) {
-    if (arrNo.indexOf(i)) {
-      x[i].classList.add("options-hide");
+  for (i = 0; i < currencyOptions.length; i++) {
+    if (selectBoxesToClose.indexOf(i)) {
+      currencyOptions[i].classList.add("options-hide");
     }
   }
 }
 
-/* If the user clicks anywhere outside the select box,
-then close all select boxes: */
+// Click outside the select box closes all select boxes
 document.addEventListener("click", closeAllSelect);

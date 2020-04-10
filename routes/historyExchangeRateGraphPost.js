@@ -30,7 +30,7 @@ module.exports = function(app){
 
     var url = "https://api.exchangeratesapi.io/history?start_at=" + startDate+ "&end_at=" + endDate + "&base=" + chosenCurrency;
 
-    // Response to server --------------------------------------------------------
+    // Response to server ------------------------------------------------------
 
     https.get(url, function(res){
 

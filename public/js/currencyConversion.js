@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Exchange rates against given currency JS ------------------------------------
+// Exchange Rates Against Given Currency JS ------------------------------------
 // -----------------------------------------------------------------------------
 
 $("#conversionButton").click(async function(){
@@ -51,7 +51,7 @@ $("#conversionButton").click(async function(){
 
     var data = await responseCurrencyConversion.json();
 
-    // Post Server Request -------------------------------------------------------
+    // Post Server Request -----------------------------------------------------
 
     // Testing
     // console.log(data);
@@ -95,5 +95,5 @@ $("#conversionButton").click(async function(){
         document.getElementById("currencyResultsTextArea").value += (rounded2DecRate + " " + fullNameCurrency[currencyArray[i]] + " ("+ currencyArray[i] + ")\n");
       }
     }
-  }
+  } // End of Else statement
 }); // End of button

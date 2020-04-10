@@ -49,7 +49,7 @@
   justify-content: center;
 }
 
-/* Tezt Area ---------------------------------------------------------------- */
+/* Text Area ---------------------------------------------------------------- */
 
 #currencyResultsTextArea {
   margin-left: 10%;
@@ -76,6 +76,40 @@
       outline: none;
       font-family: Arial;
     }
+}
+
+/* Historic Date Boxes ------------------------------------------------------ */
+
+.firstDateBoxStyle {
+  width: 50%;
+  padding: 5px 5px;
+  margin-bottom: 7%;
+  display: inline-block;
+  border: 2px solid dimgray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 20px;
+  outline: none;
+}
+
+.secondDateBoxStyle {
+  width: 50%;
+  padding: 5px 5px;
+  margin-bottom: 7%;
+  margin-left: 4%;
+  display: inline-block;
+  border: 2px solid dimgray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 20px;
+  outline: none;
+}
+
+/* Stops User From Scolling With Error Popup -------------------------------- */
+
+.popup-stop-scroll {
+  height: 100%;
+  overflow: hidden;
 }
 
 /* Place Holder ------------------------------------------------------------- */

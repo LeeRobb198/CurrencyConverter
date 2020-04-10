@@ -1,0 +1,46 @@
+/* -------------------------------------------------------------------------- */
+/* Popup Styling CSS -------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+.popupContent {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  font-size: 25px;
+}
+
+.popupTitle {
+  text-align: center;
+  font-size: 40px;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+  .popupTitle {
+    padding-top: 7.5%;
+    font-size: 30px;
+  }
+}
+
+.exitButtonPopUp {
+  background-color: #E8E8E8;
+  border: 0px;
+  outline: none;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  right: 0;
+  width: 5%;
+  height: 10%;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+  .exitButtonPopUp {
+    width: 25px;
+    height: 25px;
+  }
+}

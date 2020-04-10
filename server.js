@@ -1,3 +1,7 @@
+// -----------------------------------------------------------------------------
+// Server JS -------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
 const express = require('express')
 const app = express()
 var https = require('https');
@@ -25,5 +29,5 @@ require('./routes/historyExchangeRateGraphPost')(app);
 
 // Listen for server on port 80
 app.listen(80, function () {
-  console.log('Example app listening on port 80! Go to http://localhost:80/')
+  console.log('iCurrency application listening on port 80! Go to http://localhost:80/')
 })

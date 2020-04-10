@@ -1,0 +1,26 @@
+/* -------------------------------------------------------------------------- */
+/* Exchange Rates Popup CSS ------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+.currencyExchangeRatesPopup {
+  position: fixed;
+  display: none;
+  top: 30%;
+  left: 30%;
+  right: 30%;
+  width: 40%;
+  height: 40%;
+  background: #E8E8E8;
+  border: 10px solid #404040;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+  .currencyExchangeRatesPopup {
+    top: 20%;
+    width: 70%;
+    height: 40%;
+    left: 15%;
+    right: 15%;
+  }
+}

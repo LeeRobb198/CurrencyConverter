@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Creates a graph of exchange rates against a given currency JS ---------------
+// Creates A Graph Of Exchange Rates Against A Given Currency JS ---------------
 // -----------------------------------------------------------------------------
 
 $("#graphButton").click(async function(){
@@ -19,6 +19,8 @@ $("#graphButton").click(async function(){
   // console.log(chosenCurrency);
   // console.log(minimumExchangeRateValue);
   // console.log(maximumExchangeRateValue);
+
+  // Input sanitation ----------------------------------------------------------
 
   if ((chosenCurrency == "noValue") || ((isNaN(minimumExchangeRateValue)) || (minimumExchangeRateValue.length == 0)) || ((isNaN(maximumExchangeRateValue)) || (maximumExchangeRateValue.length == 0))) {
     let currencyRatePopup = document.querySelector(".currencyRatePopup");
@@ -45,7 +47,7 @@ $("#graphButton").click(async function(){
 
     var data = await responseCurrencyGraph.json();
 
-    // Post Server Request -------------------------------------------------------
+    // Post Server Request -----------------------------------------------------
 
     // Constructs arrays
     var selectedCurrencyArray = data.body.selectedCurrencyArray;
@@ -130,7 +132,7 @@ $("#graphButton").click(async function(){
     // Enables and disables buttons
     document.getElementById("graphButton").disabled = true;
     document.getElementById("clearGraphButton").disabled = false;
-  }
+  } // End of Else statement
 }); // End of button
 
 // Clears graph ----------------------------------------------------------------
