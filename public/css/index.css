@@ -111,3 +111,182 @@ body {
   border-bottom: 20px solid #404040;
   border-left: 20px solid transparent;
 }
+
+/* Popup Styling ------------------------------------------------------------ */
+
+.popupContent {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  font-size: 25px;
+}
+
+.popupTitle {
+  text-align: center;
+  font-size: 40px;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+  .popupTitle {
+    padding-top: 7.5%;
+    font-size: 30px;
+  }
+}
+
+.exitButtonPopUp {
+  background-color: #E8E8E8;
+  border: 0px;
+  outline: none;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  right: 0;
+  width: 5%;
+  height: 10%;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+  .exitButtonPopUp {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Currency exchange rates popup -------------------------------------------- */
+
+.currencyExchangeRatesPopup {
+  position: fixed;
+  display: none;
+  top: 30%;
+  left: 30%;
+  right: 30%;
+  width: 40%;
+  height: 40%;
+  background: #E8E8E8;
+  border: 10px solid #404040;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+  .currencyExchangeRatesPopup {
+    top: 20%;
+    width: 70%;
+    height: 40%;
+    left: 15%;
+    right: 15%;
+  }
+}
+
+/* Not a number popup ------------------------------------------------------- */
+
+.notNumberPopup {
+  position: fixed;
+  display: none;
+  top: 30%;
+  left: 30%;
+  right: 30%;
+  width: 40%;
+  height: 50%;
+  background: #E8E8E8;
+  border: 10px solid #404040;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+  .notNumberPopup {
+    top: 10%;
+    left: 15%;
+    right: 15%;
+    width: 70%;
+    height: 60%;
+  }
+}
+
+/* Currency rate popup ------------------------------------------------------- */
+
+.currencyRatePopup {
+  position: fixed;
+  display: none;
+  top: 30%;
+  left: 30%;
+  right: 30%;
+  width: 40%;
+  height: 50%;
+  background: #E8E8E8;
+  border: 10px solid #404040;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+  .currencyRatePopup {
+    top: 10%;
+    width: 70%;
+    height: 75%;
+    left: 15%;
+    right: 15%;
+  }
+}
+
+/* Currency history popup ------------------------------------------------------- */
+
+.currencyHistoryPopup {
+  position: fixed;
+  display: none;
+  top: 30%;
+  left: 30%;
+  right: 30%;
+  width: 40%;
+  height: 50%;
+  background: #E8E8E8;
+  border: 10px solid #404040;
+}
+
+/* For mobile device headerLine */
+@media screen and (max-width: 1024px) {
+  .currencyHistoryPopup {
+    top: 20%;
+    left: 15%;
+    right: 15%;
+    width: 70%;
+    height: 60%;
+  }
+}
+
+/* Historic date boxes ------------------------------------------------------ */
+
+.firstDateBoxStyle {
+  width: 50%;
+  padding: 5px 5px;
+  margin-bottom: 7%;
+  display: inline-block;
+  border: 2px solid dimgray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 20px;
+  outline: none;
+}
+
+.secondDateBoxStyle {
+  width: 50%;
+  padding: 5px 5px;
+  margin-bottom: 7%;
+  margin-left: 4%;
+  display: inline-block;
+  border: 2px solid dimgray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 20px;
+  outline: none;
+}
+
+/* Stops user from scolling with error popup -------------------------------- */
+
+.popup-stop-scroll {
+  height: 100%;
+  overflow: hidden;
+}

@@ -72,7 +72,7 @@
           <form>
             <div class="currencyDropdown">
               <select id="currencyCompareDropdown">
-                <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
+                <option value="noValue" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="USD">USD - United States Dollar</option>
@@ -122,7 +122,7 @@
           <form>
             <div class="currencyDropdown">
               <select id="currencyConversionDropdown">
-                <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
+                <option value="noValue" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="USD">USD - United States Dollar</option>
@@ -203,7 +203,7 @@
           <form>
             <div class="currencyDropdown">
               <select id="currencyCompareGraphDropdown">
-                <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
+                <option value="noValue" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="USD">USD - United States Dollar</option>
@@ -285,7 +285,7 @@
           <form>
             <div class="currencyDropdown">
               <select id="historicExchangeRateGraphDropdown">
-                <option value="" selected disabled hidden> Select A Currency To Explore Its History </option> <!-- remove if can't add validation -->
+                <option value="noValue" selected disabled hidden> Select A Currency To Explore Its History </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="USD">USD - United States Dollar</option>
@@ -326,7 +326,7 @@
           <form>
             <div class="currencyDropdown">
               <select id="historicExchangeRateGraphDropdownComparison">
-                <option value="" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
+                <option value="noValue" selected disabled hidden> Select Currency </option> <!-- remove if can't add validation -->
                 <option value="GBP">GBP - Pound Sterling</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="USD">USD - United States Dollar</option>
@@ -365,8 +365,8 @@
           </form>
           <p> Search between two dates: </p>
           <div class="textboxAlignment">
-            <input type="text" placeholder="Date" class="textboxStyle" id="startDate">
-            <input type="text" placeholder="Date" class="textboxStyle" id="endDate">
+            <input type="date" placeholder="Date" class="firstDateBoxStyle" id="startDate">
+            <input type="date" placeholder="Date" class="secondDateBoxStyle" id="endDate">
           </div>
 
           <div class="doubleButtonAlignment">
@@ -388,6 +388,67 @@
 
     </section>
 
+    <!-- Error Popups --------------------------------------------------------->
+
+    <!-- Select a Currency -->
+
+    <div class="currencyExchangeRatesPopup">
+      <div class="popupContent">
+        <h1 class="popupTitle"> Error Incorrect Input! </h1>
+        Please enter a currency from the dropdown.
+        <button class="exitButtonPopUp" id="closeCurrencyExchangeRatesPopup">
+          <img src="images/exit-icon.svg">
+        </button>
+      </div>
+    </div>
+
+    <!-- Currency Conversion -->
+
+    <div class="notNumberPopup">
+      <div class="popupContent">
+        <h1 class="popupTitle"> Error Incorrect Input! </h1>
+        Please select a currency from the dropdown and enter a numbered value in the form:
+        <ul>
+          <li> 500 </li>
+          <li> £500 </li>
+          <li> 500.00 </li>
+        </ul>
+        <button class="exitButtonPopUp" id="closeNotNumberPopup">
+          <img src="images/exit-icon.svg">
+        </button>
+      </div>
+    </div>
+
+    <!-- Currency Graph -->
+
+    <div class="currencyRatePopup">
+      <div class="popupContent">
+        <h1 class="popupTitle"> Error Incorrect Input! </h1>
+        Please select a currency from the dropdown and enter a numbered limit (Min/Max) in the form:
+        <ul>
+          <li> 0 - 20 </li>
+          <li> 50 - 200 </li>
+          <li> 0 - 20000 </li>
+        </ul>
+        <button class="exitButtonPopUp" id="closeCurrencyRatePopup">
+          <img src="images/exit-icon.svg">
+        </button>
+      </div>
+    </div>
+
+    <!-- Currency History -->
+
+    <div class="currencyHistoryPopup">
+      <div class="popupContent">
+        <h1 class="popupTitle"> Error Incorrect Input! </h1>
+        Please select a currency and a currency to compare against from the two dropdowns.
+        Please also select two dates to compare between.
+        <button class="exitButtonPopUp" id="closeCurrencyHistoryPopup">
+          <img src="images/exit-icon.svg">
+        </button>
+      </div>
+    </div>
+
     <!-- Footer -->
     <div class="footer"></div>
 
@@ -407,6 +468,9 @@
 
     <!-- historicExchangeRateGraph script -->
     <script src="/js/historicExchangeRateGraph.js"></script>
+
+    <!-- sideNav script -->
+    <script src="/js/popup.js"></script>
 
     <!-- sideNav script -->
     <script src="/js/sideNav.js"></script>

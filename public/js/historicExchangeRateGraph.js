@@ -19,87 +19,93 @@ $("#graphHistoricButton").click(async function(){
   // Get the end date
   var endDate = document.getElementById("endDate").value;
 
-  // Array to be sent to server
-  var currencyHistoryData = {chosenCurrency, chosenComparisonCurrency, startDate, endDate};
+  if ((chosenCurrency == "noValue") || (chosenComparisonCurrency == "noValue") || (startDate.length == 0) || (endDate.length == 0)) {
+    let currencyHistoryPopup = document.querySelector(".currencyHistoryPopup");
+    currencyHistoryPopup.style.display = "block";
 
-  // Content to be sent to the server
-  var options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(currencyHistoryData)
-  }
+    // Stops user from scolling (desktop/laptop)
+    $('body').addClass('popup-stop-scroll');
+  } else {
 
-  // Sends request to server
-  var responseHistory = await fetch('/historyAPI', options);
+    // Array to be sent to server
+    var currencyHistoryData = {chosenCurrency, chosenComparisonCurrency, startDate, endDate};
 
-  var data = await responseHistory.json();
-
-  console.log(data);
-
-  // Post Server Request -------------------------------------------------------
-
-  // Constructs arrays
-  var formattedDateArray = data.body.formattedDateArray;
-  var selectedCurrencyHistoryArray = data.body.selectedCurrencyHistoryArray;
-
-  // Line graph format
-  function BuildLineChart(labels, values, chartTitle) {
-    var ctx = document.getElementById("lineChart").getContext('2d');
-    var myLineChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: chartTitle,
-          data: values,
-          backgroundColor: [
-            'rgba(72, 72, 72, 1)',
-          ],
-          fill: false,
-          radius: 2,
-          borderColor: 'rgba(64, 64, 64, 1)',
-          borderWidth: 2
-        }]
+    // Content to be sent to the server
+    var options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        title: {
-          display: true,
-          text: 'Exchange Rate History: ' + chosenCurrency + ' Against ' + chosenComparisonCurrency,
-          fontSize: 30,
-          fontColor: 'rgba(64, 64, 64, 1)',
-        },
-        legend: {
-          display: false,
-        },
-        gridLines: {
-          display: false,
-        },
-        scales:{
-          xAxes: [{
-              display: true,
+      body: JSON.stringify(currencyHistoryData)
+    }
+
+    // Sends request to server
+    var responseHistory = await fetch('/historyAPI', options);
+
+    var data = await responseHistory.json();
+
+    // Post Server Request -------------------------------------------------------
+
+    // Constructs arrays
+    var formattedDateArray = data.body.formattedDateArray;
+    var selectedCurrencyHistoryArray = data.body.selectedCurrencyHistoryArray;
+
+    // Line graph format
+    function BuildLineChart(labels, values, chartTitle) {
+      var ctx = document.getElementById("lineChart").getContext('2d');
+      var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: chartTitle,
+            data: values,
+            backgroundColor: [
+              'rgba(72, 72, 72, 1)',
+            ],
+            fill: false,
+            radius: 2,
+            borderColor: 'rgba(64, 64, 64, 1)',
+            borderWidth: 2
           }]
         },
-        elements: {
-            line: {
-                tension: 0
-            }
-        },
-      }
-    });
-    return myLineChart;
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          title: {
+            display: true,
+            text: 'Exchange Rate History: ' + chosenCurrency + ' Against ' + chosenComparisonCurrency,
+            fontSize: 30,
+            fontColor: 'rgba(64, 64, 64, 1)',
+          },
+          legend: {
+            display: false,
+          },
+          gridLines: {
+            display: false,
+          },
+          scales:{
+            xAxes: [{
+                display: true,
+            }]
+          },
+          elements: {
+              line: {
+                  tension: 0
+              }
+          },
+        }
+      });
+      return myLineChart;
+    }
+
+    // Creates graph
+    var chart = BuildLineChart(formattedDateArray, selectedCurrencyHistoryArray, "Exchange Rates History");
+
+    // Enables and disables buttons
+    document.getElementById("graphHistoricButton").disabled = true;
+    document.getElementById("clearHistoricGraphButton").disabled = false;
   }
-
-  // Creates graph
-  var chart = BuildLineChart(formattedDateArray, selectedCurrencyHistoryArray, "Exchange Rates History");
-
-  // Enables and disables buttons
-  document.getElementById("graphHistoricButton").disabled = true;
-  document.getElementById("clearHistoricGraphButton").disabled = false;
-
 }); // End button
 
 $("#clearHistoricGraphButton").click(function(){

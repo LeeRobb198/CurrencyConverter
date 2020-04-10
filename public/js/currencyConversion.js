@@ -16,14 +16,22 @@ $("#conversionButton").click(async function(){
   var amount = document.getElementById("amount").value;
 
   // Testing
-  // console.log(chosenCurrencyConversion);
-  // console.log(amount);
+  console.log(chosenCurrency);
+  console.log(amount);
+  console.log(amount.length);
 
-  if (isNaN(amount)) {
-    // -------------------------------------------------------------------------
-    // WORK TO BE DONE ---------------------------------------------------------
-    // -------------------------------------------------------------------------
-    console.log("Your not a number");
+  // Input sanitation ----------------------------------------------------------
+
+  amount = amount.replace(/,/g, '');
+
+  var charLength = amount.length - 1;
+
+  if (((isNaN(amount)) || (amount.length == 0)) || (chosenCurrency == "noValue")) {
+    let notNumberPopup = document.querySelector(".notNumberPopup");
+    notNumberPopup.style.display = "block";
+
+    // Stops user from scolling (desktop/laptop)
+    $('body').addClass('popup-stop-scroll');
   } else {
 
     // Array to be sent to server
