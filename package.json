@@ -7,18 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LeeRobb198/CurrencyConverter.git"
-  },
   "author": "Lee Robbie - 1601432",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LeeRobb198/CurrencyConverter/issues"
-  },
-  "homepage": "https://github.com/LeeRobb198/CurrencyConverter#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "http": "0.0.0"
-  }
 }
