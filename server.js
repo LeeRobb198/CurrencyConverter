@@ -5,8 +5,6 @@
 const express = require('express')
 const app = express();
 const PORT = process.env.PORT || 8080;
-// set the port based on environment (more on environments later)
-var port    = PORT;
 
 app.use(express.json());
 
