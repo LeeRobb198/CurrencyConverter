@@ -4,7 +4,10 @@
 
 const express = require('express')
 const app = express();
-var http = require('http');
+// var http = require('http');
+const PORT = process.env.PORT || 8080;
+// set the port based on environment (more on environments later)
+var port    = PORT;
 app.use(express.json());
 
  // Get the public folder
@@ -28,18 +31,9 @@ require('./routes/currencyGraphPost')(app);
 require('./routes/historyExchangeRateGraphPost')(app);
 
 // Listen for server on port 80
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, function () {
-  console.log('iCurrency application listening on port ' + ${ PORT } + '! Go to http://localhost:' + ${ PORT } + '/')
-})
+// app.listen(PORT, function () {
+//   console.log('iCurrency application listening on port ' + ${ PORT } + '! Go to http://localhost:' + ${ PORT } + '/')
+// })
 
-
-// Test --------------------------------------------
-
-// http.createServer(function (request, response) {
-//   response.writeHead(200, {'Content-Type': 'text/plain'});
-//
-//   response.end('Hello World\n');
-// }).listen(8080);
-//
-// console.log('iCurrency application listening on port 8080! Go to http://localhost:8080/')
+app.listen(PORT);
+console.log('Express Server running at http://127.0.0.1:'.PORT);
