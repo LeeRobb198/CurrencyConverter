@@ -17,7 +17,7 @@
 }
 
 /* For mobile device remove divider */
-@media screen and (max-height: 1311px) {
+@media screen and (max-height: 929px) {
     .mainContentVerticalTopDivider {
       height: 55%;
     }
@@ -60,7 +60,7 @@
 }
 
 /* For mobile device remove divider */
-@media screen and (max-height: 1311px) {
+@media screen and (max-height: 929px) {
     .mainContentVerticalBottomDivider {
       height: 58%;
     }
