@@ -17,11 +17,11 @@
 }
 
 /* For mobile device remove divider */
-@media screen and (max-width: 1311px) {
+/* @media screen and (max-width: 1311px) {
     .mainContentVerticalTopDivider {
       height: 55%;
     }
-}
+} */
 
 /* For mobile device remove divider */
 @media screen and (max-width: 1024px) {
@@ -34,7 +34,8 @@
   display: inline-block;
   position: absolute;
   margin-top: 1%;
-  height: 48%;
+  /* height: 48%; */
+  height: 380px;
   right: 40%;
   width: 0.5%;
   background: #D8D8D8;
@@ -60,11 +61,11 @@
 }
 
 /* For mobile device remove divider */
-@media screen and (max-width: 1311px) {
+/* @media screen and (max-width: 1311px) {
     .mainContentVerticalBottomDivider {
       height: 58%;
     }
-}
+} */
 
 /* For mobile device remove divider */
 @media screen and (max-width: 1024px) {
