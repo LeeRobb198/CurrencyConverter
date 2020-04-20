@@ -16,9 +16,9 @@ $("#conversionButton").click(async function(){
   var amount = document.getElementById("amount").value;
 
   // Testing
-  console.log(chosenCurrency);
-  console.log(amount);
-  console.log(amount.length);
+  // console.log(chosenCurrency);
+  // console.log(amount);
+  // console.log(amount.length);
 
   // Input sanitation ----------------------------------------------------------
 
