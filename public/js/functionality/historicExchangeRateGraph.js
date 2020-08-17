@@ -63,7 +63,7 @@ $("#graphHistoricButton").click(async function(){
             label: chartTitle,
             data: values,
             backgroundColor: [
-              'rgba(72, 72, 72, 1)',
+              'rgba(54, 72, 108, 1)',
             ],
             fill: false,
             radius: 2,
