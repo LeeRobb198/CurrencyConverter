@@ -8,8 +8,8 @@
   float: left;
   height: 370px;
   width: 55%;
-  background: #E8E8E8;
-  border: 2px solid #404040;
+  background: #bec9df;
+  border: 2px solid #36486c;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -19,8 +19,8 @@
       margin: 0;
       height: 370px;
       width: 100%;
-      background: #E8E8E8;
-      border: 2px solid #404040;
+      background: #bec9df;
+      border: 2px solid #36486c;
     }
 }
 
@@ -30,7 +30,7 @@
   float: right;
   height: 370px;
   width: 35%;
-  background: #E8E8E8;
+  background: #bec9df;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -41,12 +41,12 @@
       margin-bottom: 20px;
       height: 100%;
       width: 100%;
-      background: #E8E8E8;
+      background: #bec9df;
     }
 }
 
 .contentCentreRight {
   margin-left: 10%;
   margin-right: 10%;
-  color: #404040;
+  color: #36486c;
 }

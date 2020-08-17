@@ -17,7 +17,7 @@
 
 /* Colour of option div once selected */
 .currency-selected {
-  background-color: #404040;
+  background-color: #36486c;
 }
 
 /* Style the arrow inside the select element */
@@ -50,7 +50,7 @@
 /* Style currency options */
 .currency-options {
   position: absolute;
-  background-color: #666666;
+  background-color: #475f8e;
   top: 100%;
   left: 0;
   right: 0;

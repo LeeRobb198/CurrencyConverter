@@ -58,7 +58,7 @@
   height: 60%;
   font-size: 30px;
   line-height: 50px;
-  border: 2px solid #404040;
+  border: 2px solid #36486c;
   outline: none;
   font-family: Arial;
 }
@@ -72,7 +72,7 @@
       height: 60%;
       font-size: 15px;
       line-height: 50px;
-      border: 2px solid #404040;
+      border: 2px solid #36486c;
       outline: none;
       font-family: Arial;
     }
@@ -116,5 +116,5 @@
 
 /* Colour of text of placeholder in text */
 ::placeholder {
-  color: #404040;
+  color: #36486c;
 }

@@ -3,7 +3,7 @@
 /* -------------------------------------------------------------------------- */
 
 .buttonStyle {
-  background-color: #404040;
+  background-color: #36486c;
   border: none;
   color: white;
   padding: 10px 28px;
@@ -21,14 +21,14 @@
 
 .buttonStyle:hover {
   background-color: #E8E8E8;
-  border: 2px solid #404040;
-  color: #404040;
+  border: 2px solid #36486c;
+  color: #36486c;
   border-radius: 4px;
 }
 
 .buttonStyle:disabled {
-  background-color: #404040;
-  border: 2px solid #404040;
+  background-color: #36486c;
+  border: 2px solid #36486c;
   color: white;
   opacity: 0.6;
 }
