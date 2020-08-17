@@ -67,7 +67,7 @@ $("#graphHistoricButton").click(async function(){
             ],
             fill: false,
             radius: 2,
-            borderColor: 'rgba(64, 64, 64, 1)',
+            borderColor: 'rgba(54, 72, 108, 1)',
             borderWidth: 2
           }]
         },
@@ -78,7 +78,7 @@ $("#graphHistoricButton").click(async function(){
             display: true,
             text: 'Exchange Rate History: ' + chosenCurrency + ' Against ' + chosenComparisonCurrency,
             fontSize: 30,
-            fontColor: 'rgba(64, 64, 64, 1)',
+            fontColor: 'rgba(54, 72, 108, 1)',
           },
           legend: {
             display: false,
