@@ -25,6 +25,7 @@
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 20px;
+  color: #36486c;
   outline: none;
 }
 
@@ -57,6 +58,7 @@
   width: 80%;
   height: 60%;
   font-size: 30px;
+  color: #36486c;
   line-height: 50px;
   border: 2px solid #36486c;
   outline: none;
